@@ -16,7 +16,6 @@ android {
         }
     }
     compileSdkVersion 29
-    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.avs.brick.game"
         minSdkVersion 21
