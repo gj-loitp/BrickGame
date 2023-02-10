@@ -19,6 +19,7 @@ import com.shawnlin.numberpicker.NumberPicker;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -42,7 +43,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView 
     NumberPicker squaresNumberPicker;
 
     @BindView(R.id.sEnableHints)
-    Switch enableHintsSwitch;
+    SwitchCompat enableHintsSwitch;
 
     private SettingsPresenter settingsPresenter;
 

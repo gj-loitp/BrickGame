@@ -23,7 +23,7 @@ object Values {
     //TODO
     const val PLAY_MARKET_URL = "https://play.google.com/store/apps/details?id=com.avs.brick.game"
     const val SHARE_INTENT_TYPE = "text/plain"
-    const val DEV_NAME = "Alina Stepanova"
+    const val DEV_NAME = "Roy93Group"
 
     /*PREFERENCES*/
     const val PREFERENCES_KEY = NAMESPACE + "PREFERENCE_KEY"
