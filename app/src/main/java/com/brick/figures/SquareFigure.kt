@@ -10,7 +10,7 @@ class SquareFigure : Figure {
         squareWidth: Int,
         scale: Int,
         squaresCountInRow: Int,
-        context: Context?
+        context: Context
     ) : super(
         squareWidth,
         scale,
@@ -22,8 +22,8 @@ class SquareFigure : Figure {
 
     constructor(
         widthSquare: Int,
-        context: Context?,
-        point: Point?
+        context: Context,
+        point: Point
     ) : super(
         widthSquare,
         context,
@@ -33,8 +33,8 @@ class SquareFigure : Figure {
     constructor(
         squareWidth: Int,
         scale: Int,
-        context: Context?,
-        point: Point?
+        context: Context,
+        point: Point
     ) : super(
         squareWidth,
         scale,
@@ -50,34 +50,32 @@ class SquareFigure : Figure {
         figureMask[1][1] = true
     }
 
-    override fun getRotatedFigure(): FigureType? {
-        return null
-    }
+    override val rotatedFigure: FigureType?
+        get() = null
 
-    override fun getWidthInSquare(): Int {
-        return 2
-    }
+    override val widthInSquare: Int
+        get() = 2
 
-    override fun getHeightInSquare(): Int {
-        return 2
-    }
+    override val heightInSquare: Int
+        get() = 2
 
-    override fun getPath(): Path {
-        val path = Path()
-        path.moveTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
-        path.lineTo(
-            (pointOnScreen.x + squareWidth * 2).toFloat(),
-            (pointOnScreen.y - scale).toFloat()
-        )
-        path.lineTo(
-            (pointOnScreen.x + squareWidth * 2).toFloat(),
-            (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
-        )
-        path.lineTo(
-            pointOnScreen.x.toFloat(),
-            (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
-        )
-        path.close()
-        return path
-    }
+    override val path: Path?
+        get() {
+            val path = Path()
+            path.moveTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+            )
+            path.lineTo(
+                pointOnScreen.x.toFloat(),
+                (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+            )
+            path.close()
+            return path
+        }
 }

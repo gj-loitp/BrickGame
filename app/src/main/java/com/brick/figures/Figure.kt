@@ -1,133 +1,138 @@
-package com.brick.figures;
+package com.brick.figures
 
-import android.content.Context;
-import android.graphics.Path;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Path
+import android.graphics.Point
+import androidx.core.content.ContextCompat
+import com.brick.R
+import com.brick.Values.EXTRA_ROWS
+import com.brick.enums.FigureState
+import com.brick.enums.FigureType
+import java.util.*
 
-import com.brick.R;
-import com.brick.enums.FigureState;
-import com.brick.enums.FigureType;
+abstract class Figure {
+    var state: FigureState
+    private val context: Context
 
-import java.util.ArrayList;
-import java.util.Random;
+    @JvmField
+    protected val squareWidth: Int
 
-import static com.brick.Values.EXTRA_ROWS;
+    @JvmField
+    var scale: Int
 
-/**
- * Created by Alina on 02.04.2017.
- */
+    @JvmField
+    val pointOnScreen: Point
 
-public abstract class Figure {
+    @JvmField
+    val pointInNet: Point
 
-    private FigureState state;
+    lateinit var figureMask: Array<BooleanArray>
 
-    private final Context context;
-
-    protected final int squareWidth;
-
-    public int scale;
-
-    public final Point pointOnScreen;
-
-    public final Point pointInNet;
-
-    public boolean[][] figureMask;
-
-    protected Figure(int squareWidth, int scale, int squaresCountInRow, Context context) {
-        this.squareWidth = squareWidth;
-        this.pointOnScreen = initPoint(squaresCountInRow);
-        this.scale = scale;
-        this.state = FigureState.MOVING;
-        this.context = context;
-        pointInNet = new Point(getCoordinateInNet(squareWidth, pointOnScreen.x),
-                EXTRA_ROWS - (getHeightInSquare()));
-        initFigureMask();
+    protected constructor(
+        squareWidth: Int,
+        scale: Int,
+        squaresCountInRow: Int,
+        context: Context
+    ) {
+        this.squareWidth = squareWidth
+        pointOnScreen = initPoint(squaresCountInRow)
+        this.scale = scale
+        state = FigureState.MOVING
+        this.context = context
+        pointInNet = Point(
+            getCoordinateInNet(squareWidth, pointOnScreen.x),
+            EXTRA_ROWS - heightInSquare
+        )
+        initFigureMask()
     }
 
-    protected Figure(int squareWidth, int scale, Context context, Point pointOnScreen) {
-        this.squareWidth = squareWidth;
-        this.pointOnScreen = pointOnScreen;
-        this.scale = scale;
-        this.state = FigureState.MOVING;
-        this.context = context;
-        pointInNet = new Point(getCoordinateInNet(squareWidth, pointOnScreen.x),
-                getCoordinateInNet(squareWidth, pointOnScreen.y));
+    protected constructor(
+        squareWidth: Int,
+        scale: Int,
+        context: Context,
+        pointOnScreen: Point
+    ) {
+        this.squareWidth = squareWidth
+        this.pointOnScreen = pointOnScreen
+        this.scale = scale
+        state = FigureState.MOVING
+        this.context = context
+        pointInNet = Point(
+            /* x = */ getCoordinateInNet(squareWidth, pointOnScreen.x),
+            /* y = */ getCoordinateInNet(squareWidth, pointOnScreen.y)
+        )
     }
 
-    protected Figure(int widthSquare, Context context, Point pointOnScreen) {
-        this.squareWidth = widthSquare / 2;
-        this.pointOnScreen = new Point(pointOnScreen.x, pointOnScreen.y);
-        this.scale = 0;
-        this.state = FigureState.MOVING;
-        this.context = context;
-        pointInNet = new Point(pointOnScreen.x, pointOnScreen.y);
+    protected constructor(
+        widthSquare: Int,
+        context: Context,
+        pointOnScreen: Point
+    ) {
+        squareWidth = widthSquare / 2
+        this.pointOnScreen = Point(pointOnScreen.x, pointOnScreen.y)
+        scale = 0
+        state = FigureState.MOVING
+        this.context = context
+        pointInNet = Point(pointOnScreen.x, pointOnScreen.y)
     }
 
-    private Point initPoint(int squaresCountInRow) {
-        ArrayList<Integer> arrayOfPositions = new ArrayList<>();
-        for (int i = 2; i < squaresCountInRow - EXTRA_ROWS; i++) {
-            arrayOfPositions.add(i * squareWidth);
+    private fun initPoint(squaresCountInRow: Int): Point {
+        val arrayOfPositions = ArrayList<Int>()
+        for (i in 2 until squaresCountInRow - EXTRA_ROWS) {
+            arrayOfPositions.add(i * squareWidth)
         }
-        int position = new Random().nextInt(arrayOfPositions.size());
-        return new Point(arrayOfPositions.get(position), 0);
+        val position = Random().nextInt(arrayOfPositions.size)
+        return Point(arrayOfPositions[position], 0)
     }
 
-    private int getCoordinateInNet(int squareWidth, int coordinate) {
-        return coordinate / squareWidth;
+    private fun getCoordinateInNet(
+        squareWidth: Int,
+        coordinate: Int
+    ): Int {
+        return coordinate / squareWidth
     }
 
-    public int getCurrentX() {
-        return pointInNet.x;
+    val currentX: Int
+        get() = pointInNet.x
+    val currentY: Int
+        get() = pointInNet.y
+
+    open fun initFigureMask() {
+        figureMask = Array(heightInSquare) {
+            BooleanArray(
+                widthInSquare
+            )
+        }
     }
 
-    public int getCurrentY() {
-        return pointInNet.y;
-    }
-
-    public FigureState getState() {
-        return state;
-    }
-
-    public void setState(FigureState state) {
-        this.state = state;
-    }
-
-    public void initFigureMask() {
-        figureMask = new boolean[getHeightInSquare()][getWidthInSquare()];
-    }
-
-    public void initMaskWithFalse() {
-        for (int i = 0; i < getHeightInSquare(); i++) {
-            for (int j = 0; j < getWidthInSquare(); j++) {
-                figureMask[i][j] = false;
+    fun initMaskWithFalse() {
+        for (i in 0 until heightInSquare) {
+            for (j in 0 until widthInSquare) {
+                figureMask?.let { array ->
+                    array[i][j] = false
+                }
             }
         }
     }
 
-    public void moveLeft() {
-        pointOnScreen.set(pointOnScreen.x - squareWidth, pointOnScreen.y);
-        pointInNet.set(pointInNet.x - 1, pointInNet.y);
+    fun moveLeft() {
+        pointOnScreen[pointOnScreen.x - squareWidth] = pointOnScreen.y
+        pointInNet[pointInNet.x - 1] = pointInNet.y
     }
 
-    public void moveRight() {
-        pointOnScreen.set(pointOnScreen.x + squareWidth, pointOnScreen.y);
-        pointInNet.set(pointInNet.x + 1, pointInNet.y);
+    fun moveRight() {
+        pointOnScreen[pointOnScreen.x + squareWidth] = pointOnScreen.y
+        pointInNet[pointInNet.x + 1] = pointInNet.y
     }
 
-    public void moveDown() {
-        pointOnScreen.set(pointOnScreen.x, pointOnScreen.y + squareWidth);
-        pointInNet.set(pointInNet.x, pointInNet.y + 1);
+    fun moveDown() {
+        pointOnScreen[pointOnScreen.x] = pointOnScreen.y + squareWidth
+        pointInNet[pointInNet.x] = pointInNet.y + 1
     }
 
-    public final int getColor() {
-        return this.context.getResources().getColor(R.color.colorPrimaryTransparent);
-    }
-
-    public abstract FigureType getRotatedFigure();
-
-    public abstract int getWidthInSquare();
-
-    public abstract int getHeightInSquare();
-
-    public abstract Path getPath();
+    val color: Int get() = ContextCompat.getColor(context, R.color.colorPrimaryTransparent)
+    abstract val rotatedFigure: FigureType?
+    abstract val widthInSquare: Int
+    abstract val heightInSquare: Int
+    abstract val path: Path?
 }
