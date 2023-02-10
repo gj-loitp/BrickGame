@@ -8,10 +8,8 @@
     <dimen name="textSize14">14sp</dimen>
     <dimen name="textSize22">22sp</dimen>
     <dimen name="textSize18">18sp</dimen>
-
     <dimen name="minPadding">4dp</dimen>
     <dimen name="midPadding">20dp</dimen>
-
     <dimen name="mainMargin">10dp</dimen>
     <dimen name="smallMargin">16dp</dimen>
     <dimen name="maxMargin">40dp</dimen>
@@ -19,15 +17,12 @@
     <dimen name="margin4dp">4dp</dimen>
     <dimen name="margin8dp">8dp</dimen>
     <dimen name="margin16dp">16dp</dimen>
-
     <dimen name="dimen48dp">48dp</dimen>
     <dimen name="dimen56dp">56dp</dimen>
     <dimen name="dimen24dp">24dp</dimen>
-
     <dimen name="maxRadius">30dp</dimen>
     <dimen name="midRadius">8dp</dimen>
     <dimen name="minRadius">2dp</dimen>
-
     <dimen name="elevation">10dp</dimen>
     <dimen name="zero_dp">0dp</dimen>
     <dimen name="settingsHeight42dp">42dp</dimen>

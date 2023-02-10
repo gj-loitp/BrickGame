@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Brick Game</string>
+    <string name="app_name">Brick</string>
     <string name="score_text">SCORE</string>
     <string name="game_title" translatable="false">BRICK GAME</string>
     <string name="new_game">NEW GAME</string>
@@ -10,7 +10,6 @@
     <string name="new_score_notification_title">New score</string>
     <string name="congrats_sub_title">Congrats! You\'ve reached a new score</string>
     <string name="game_over_text">GAME OVER</string>
-
     <!--settings-->
     <string name="privacy_policy_title">Privacy policy</string>
     <string name="feedback_title">Write to developer</string>
