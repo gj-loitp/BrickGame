@@ -1,62 +1,83 @@
-package com.brick.figures;
+package com.brick.figures
 
-import android.content.Context;
-import android.graphics.Path;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Path
+import android.graphics.Point
+import com.brick.enums.FigureType
 
-import com.brick.enums.FigureType;
-
-/**
- * Created by Alina on 02.04.2017.
- */
-
-public class SquareFigure extends Figure {
-
-    public SquareFigure(int squareWidth, int scale, int squaresCountInRow, Context context) {
-        super(squareWidth, scale, squaresCountInRow, context);
-        this.scale += squareWidth;
+class SquareFigure : Figure {
+    constructor(
+        squareWidth: Int,
+        scale: Int,
+        squaresCountInRow: Int,
+        context: Context?
+    ) : super(
+        squareWidth,
+        scale,
+        squaresCountInRow,
+        context
+    ) {
+        this.scale += squareWidth
     }
 
-    public SquareFigure(int widthSquare, Context context, Point point) {
-        super(widthSquare, context, point);
+    constructor(
+        widthSquare: Int,
+        context: Context?,
+        point: Point?
+    ) : super(
+        widthSquare,
+        context,
+        point
+    )
+
+    constructor(
+        squareWidth: Int,
+        scale: Int,
+        context: Context?,
+        point: Point?
+    ) : super(
+        squareWidth,
+        scale,
+        context,
+        point
+    )
+
+    override fun initFigureMask() {
+        super.initFigureMask()
+        figureMask[0][0] = true
+        figureMask[0][1] = true
+        figureMask[1][0] = true
+        figureMask[1][1] = true
     }
 
-    public SquareFigure(int squareWidth, int scale, Context context, Point point) {
-        super(squareWidth, scale, context, point);
+    override fun getRotatedFigure(): FigureType? {
+        return null
     }
 
-    @Override
-    public void initFigureMask() {
-        super.initFigureMask();
-        figureMask[0][0] = true;
-        figureMask[0][1] = true;
-        figureMask[1][0] = true;
-        figureMask[1][1] = true;
+    override fun getWidthInSquare(): Int {
+        return 2
     }
 
-    @Override
-    public FigureType getRotatedFigure() {
-        return null;
+    override fun getHeightInSquare(): Int {
+        return 2
     }
 
-    @Override
-    public int getWidthInSquare() {
-        return 2;
-    }
-
-    @Override
-    public int getHeightInSquare() {
-        return 2;
-    }
-
-    @Override
-    public Path getPath() {
-        Path path = new Path();
-        path.moveTo(pointOnScreen.x, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y + squareWidth * 2 - scale);
-        path.lineTo(pointOnScreen.x, pointOnScreen.y + squareWidth * 2 - scale);
-        path.close();
-        return path;
+    override fun getPath(): Path {
+        val path = Path()
+        path.moveTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
+        path.lineTo(
+            (pointOnScreen.x + squareWidth * 2).toFloat(),
+            (pointOnScreen.y - scale).toFloat()
+        )
+        path.lineTo(
+            (pointOnScreen.x + squareWidth * 2).toFloat(),
+            (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+        )
+        path.lineTo(
+            pointOnScreen.x.toFloat(),
+            (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+        )
+        path.close()
+        return path
     }
 }
