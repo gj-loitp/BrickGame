@@ -13,7 +13,7 @@
         android:background="@color/white"
         android:fadeScrollbars="true"
         android:scrollbars="vertical"
-        tools:context=".ui.settings.SettingsActivity">
+        tools:context="com.brick.ui.settings.SettingsActivity">
 
         <TextView
             android:id="@+id/tvSettingsTitle"
