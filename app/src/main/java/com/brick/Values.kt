@@ -3,8 +3,7 @@ package com.brick
 import com.brick.enums.FigureSpeed
 
 object Values {
-    //TODO
-    private const val NAMESPACE = "com.avs.brick.game"
+    private const val NAMESPACE = "db"
     const val EXTRA_ROWS = 4
     const val FIGURE_STOPPED_SCORE = 10
     const val COUNT_DOWN_INTERVAL = 750
