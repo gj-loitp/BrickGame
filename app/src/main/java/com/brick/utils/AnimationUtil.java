@@ -10,14 +10,14 @@ import com.brick.R;
 public class AnimationUtil {
 
     public static Animation getZoomIn(Context context) {
-        return AnimationUtils.loadAnimation(context, R.anim.zoom_in);
+        return AnimationUtils.loadAnimation(context, R.anim.anim_zoom_in);
     }
 
     public static Animation getSlideInLeft(Context context) {
-        return AnimationUtils.loadAnimation(context, R.anim.slide_in_left);
+        return AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_left);
     }
 
     public static Animation getSlideInRight(Context context) {
-        return AnimationUtils.loadAnimation(context, R.anim.slide_in_right);
+        return AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_right);
     }
 }
