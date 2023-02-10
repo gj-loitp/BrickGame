@@ -91,7 +91,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vDividerColor" />
 
-        <include layout="@layout/speed_picker" />
+        <include layout="@layout/layout_speed_picker" />
 
         <View
             android:id="@+id/vDividerSpeed"
@@ -147,7 +147,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/squaresCountNumberPicker" />
 
-        <include layout="@layout/settings_hints" />
+        <include layout="@layout/layout_settings_hints" />
 
         <TextView
             android:id="@+id/tvOtherTitle"
@@ -167,7 +167,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flShowHints" />
 
-        <include layout="@layout/settings_rate" />
+        <include layout="@layout/layout_settings_rate" />
 
         <View
             android:id="@+id/vDividerRate"
@@ -176,7 +176,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flRate" />
 
-        <include layout="@layout/settings_more_apps" />
+        <include layout="@layout/layout_settings_more_apps" />
 
         <View
             android:id="@+id/vDividerMoreApps"
@@ -185,7 +185,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flMoreApps" />
 
-        <include layout="@layout/settings_feedback" />
+        <include layout="@layout/layout_settings_feedback" />
 
         <View
             android:id="@+id/vDividerFeedback"
@@ -194,7 +194,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flFeedback" />
 
-        <include layout="@layout/settings_privacy_policy" />
+        <include layout="@layout/layout_settings_privacy_policy" />
 
         <View
             android:id="@+id/vDividerPolicy"

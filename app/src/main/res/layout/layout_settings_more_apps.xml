@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/flMoreApps"
     android:layout_width="match_parent"
@@ -18,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|center_vertical"
         android:layout_marginEnd="@dimen/margin4dp"
-        app:srcCompat="@drawable/ic_arrow"/>
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/ic_arrow" />
 
     <TextView
         android:id="@+id/tvMoreAppsTitle"
@@ -27,8 +27,9 @@
         android:fontFamily="sans-serif-condensed-light"
         android:gravity="center_vertical"
         android:paddingStart="@dimen/margin8dp"
+        android:paddingEnd="0dp"
         android:text="@string/more_apps_title"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/settingsTextSize"/>
+        android:textSize="@dimen/settingsTextSize" />
 
 </FrameLayout>
