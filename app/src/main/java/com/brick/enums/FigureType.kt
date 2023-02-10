@@ -1,6 +1,6 @@
-package com.brick.enums;
+package com.brick.enums
 
-public enum FigureType {
+enum class FigureType {
     LONG_FIGURE,
     LONG_SECOND_FIGURE,
     SQUARE_FIGURE,

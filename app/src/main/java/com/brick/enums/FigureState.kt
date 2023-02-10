@@ -1,7 +1,6 @@
-package com.brick.enums;
+package com.brick.enums
 
-
-public enum FigureState {
+enum class FigureState {
     MOVING,
     STOPPED
 }
