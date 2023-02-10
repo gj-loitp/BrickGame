@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/llController"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:gravity="center"
+    android:layout_height="match_parent"
     android:layout_weight="1"
-    android:layout_height="match_parent">
+    android:gravity="center"
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/bLeft"
+        style="@style/main_activity_button_Style"
         android:background="@color/transparent"
-        style="@style/main_activity_button_Style"/>
+        android:contentDescription="@string/app_name" />
 
     <ImageButton
         android:id="@+id/bRight"
+        style="@style/main_activity_button_Style"
         android:background="@color/transparent"
-        style="@style/main_activity_button_Style"/>
+        android:contentDescription="@string/app_name" />
 </LinearLayout>

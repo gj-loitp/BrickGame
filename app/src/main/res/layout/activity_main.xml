@@ -18,15 +18,14 @@
             android:id="@+id/playingArea"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
-        </com.brick.ui.main.views.PlayingAreaView>
+            android:background="@color/white" />
 
     </FrameLayout>
 
     <View
         android:layout_width="1px"
-        android:background="@color/black"
         android:layout_height="match_parent"
+        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,8 +80,7 @@
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvScoreTitle">
-        </com.brick.ui.main.views.ScoreView>
+            app:layout_constraintTop_toBottomOf="@+id/tvScoreTitle" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -114,44 +112,43 @@
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNextFigureTitle">
-        </com.brick.ui.main.views.PreviewAreaView>
+            app:layout_constraintTop_toBottomOf="@+id/tvNextFigureTitle" />
 
         <ImageView
             android:id="@+id/ivRotate"
+            style="@style/ControlButtonStyle"
             android:layout_margin="@dimen/margin4dp"
             android:layout_marginBottom="@dimen/margin"
+            android:contentDescription="@string/content_description_rotate"
             android:padding="@dimen/rotateIconPadding"
             app:layout_constraintBottom_toTopOf="@+id/ivMoveDown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_rotate"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_rotate" />
+            app:srcCompat="@drawable/ic_rotate" />
 
         <ImageView
             android:id="@+id/ivMoveDown"
+            style="@style/ControlButtonStyle"
             android:layout_margin="@dimen/margin4dp"
+            android:contentDescription="@string/content_description_move_down"
             android:padding="@dimen/moveDownIconPadding"
             app:layout_constraintBottom_toTopOf="@+id/ivPausePlay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivRotate"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_down"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_move_down" />
+            app:srcCompat="@drawable/ic_down" />
 
         <ImageView
             android:id="@+id/ivPausePlay"
+            style="@style/ControlButtonStyle"
             android:layout_margin="@dimen/margin4dp"
             android:layout_marginBottom="@dimen/margin16dp"
+            android:contentDescription="@string/content_description_pause_or_resume_game"
             android:padding="@dimen/pauseIconPadding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_pause"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_pause_or_resume_game" />
+            app:srcCompat="@drawable/ic_pause" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
