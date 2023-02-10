@@ -1,31 +1,25 @@
-package com.brick.utils;
+package com.brick.utils
 
-import android.os.SystemClock;
-import android.view.View;
+import android.os.SystemClock
+import android.view.View
+import java.util.*
+import kotlin.math.abs
 
-import java.util.Map;
-import java.util.WeakHashMap;
+abstract class DebouncedOnClickListener(private val minimumIntervalMillis: Long) :
+    View.OnClickListener {
+    private val lastClickMap: MutableMap<View, Long>
+    abstract fun onDebouncedClick(v: View?)
 
-public abstract class DebouncedOnClickListener implements View.OnClickListener {
-
-    private final long minimumIntervalMillis;
-    private final Map<View, Long> lastClickMap;
-
-    public abstract void onDebouncedClick(View v);
-
-    public DebouncedOnClickListener(long minimumIntervalMillis) {
-        this.minimumIntervalMillis = minimumIntervalMillis;
-        this.lastClickMap = new WeakHashMap<>();
+    init {
+        lastClickMap = WeakHashMap()
     }
 
-    @Override
-    public void onClick(View clickedView) {
-        Long previousClickTimestamp = lastClickMap.get(clickedView);
-        long currentTimestamp = SystemClock.uptimeMillis();
-
-        lastClickMap.put(clickedView, currentTimestamp);
-        if (previousClickTimestamp == null || Math.abs(currentTimestamp - previousClickTimestamp) > minimumIntervalMillis) {
-            onDebouncedClick(clickedView);
+    override fun onClick(clickedView: View) {
+        val previousClickTimestamp = lastClickMap[clickedView]
+        val currentTimestamp = SystemClock.uptimeMillis()
+        lastClickMap[clickedView] = currentTimestamp
+        if (previousClickTimestamp == null || abs(currentTimestamp - previousClickTimestamp) > minimumIntervalMillis) {
+            onDebouncedClick(clickedView)
         }
     }
 }
