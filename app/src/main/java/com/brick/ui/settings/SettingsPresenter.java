@@ -1,7 +1,7 @@
 package com.brick.ui.settings;
 
 import com.brick.R;
-import com.brick.data.SharedPreferencesManager;
+import com.brick.data.Pref;
 import com.brick.enums.FigureSpeed;
 import com.brick.utils.Utils;
 
@@ -14,26 +14,26 @@ import static com.brick.enums.FigureSpeed.VERY_SLOW;
 
 class SettingsPresenter {
 
-    private final SharedPreferencesManager sharedPreferencesManager;
+    private final Pref pref;
     private final SettingsView settingsView;
 
-    SettingsPresenter(SettingsView settingsView, SharedPreferencesManager sharedPreferencesManager) {
+    SettingsPresenter(SettingsView settingsView, Pref pref) {
         this.settingsView = settingsView;
-        this.sharedPreferencesManager = sharedPreferencesManager;
+        this.pref = pref;
     }
 
     void setValues() {
-        FigureSpeed figureSpeed = Utils.getFiguresSpeedByMillis(sharedPreferencesManager.getFiguresSpeed());
+        FigureSpeed figureSpeed = Utils.getFiguresSpeedByMillis(pref.getFiguresSpeed());
         if (settingsView != null) {
-            settingsView.markChosenColor(DEFAULT_COLOR, Utils.getViewIdByColor(sharedPreferencesManager.getFiguresColor()));
-            settingsView.setSquaresCountInRow(sharedPreferencesManager.getSquaresCountInRow());
+            settingsView.markChosenColor(DEFAULT_COLOR, Utils.getViewIdByColor(pref.getFiguresColor()));
+            settingsView.setSquaresCountInRow(pref.getSquaresCountInRow());
             settingsView.setSpeedTitle(figureSpeed.getSpeedItemId());
-            settingsView.setVerticalHintsChecked(sharedPreferencesManager.isHintsEnabled());
+            settingsView.setVerticalHintsChecked(pref.isHintsEnabled());
         }
     }
 
     void setSquareCountInRow(int newValue) {
-        sharedPreferencesManager.setSquaresCountInRow(newValue);
+        pref.setSquaresCountInRow(newValue);
     }
 
     void getEvent(int id) {
@@ -57,8 +57,8 @@ class SettingsPresenter {
                 manageColorPicking(R.color.jFigure, id);
                 break;
             case R.id.sEnableHints:
-                boolean isEnabled = sharedPreferencesManager.isHintsEnabled();
-                sharedPreferencesManager.setHintsEnabled(!isEnabled);
+                boolean isEnabled = pref.isHintsEnabled();
+                pref.setHintsEnabled(!isEnabled);
                 break;
             case R.id.tvVeryFast:
                 manageSpeedPicking(VERY_FAST.getFigureSpeedInMillis(), id);
@@ -81,13 +81,13 @@ class SettingsPresenter {
     }
 
     private void manageSpeedPicking(long newSpeed, int newItemId) {
-        sharedPreferencesManager.setFiguresSpeed(newSpeed);
+        pref.setFiguresSpeed(newSpeed);
         settingsView.setSpeedTitle(newItemId);
     }
 
     private void manageColorPicking(int newColor, int newItemId) {
-        int oldColor = sharedPreferencesManager.getFiguresColor();
-        sharedPreferencesManager.setFiguresColor(newColor);
+        int oldColor = pref.getFiguresColor();
+        pref.setFiguresColor(newColor);
         settingsView.markChosenColor(oldColor, newItemId);
     }
 }

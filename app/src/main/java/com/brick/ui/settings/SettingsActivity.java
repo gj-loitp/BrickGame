@@ -6,13 +6,12 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brick.R;
 import com.brick.Values;
-import com.brick.data.SharedPreferencesManager;
+import com.brick.data.Pref;
 import com.brick.utils.Utils;
 import com.shawnlin.numberpicker.NumberPicker;
 
@@ -53,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView 
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
         settingsPresenter = new SettingsPresenter(this,
-                new SharedPreferencesManager(getApplicationContext()));
+                new Pref(getApplicationContext()));
         squaresNumberPicker.setOnValueChangedListener((picker, oldVal, newVal) -> settingsPresenter.setSquareCountInRow(newVal));
     }
 

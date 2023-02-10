@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.brick.R;
 import com.brick.Values;
-import com.brick.data.SharedPreferencesManager;
+import com.brick.data.Pref;
 import com.brick.utils.AnimationUtil;
 
 import butterknife.BindView;
@@ -34,18 +34,18 @@ public class ScoreActivity extends AppCompatActivity {
     @BindView(R.id.ivShare)
     ImageView shareScore;
 
-    private SharedPreferencesManager sharedPreferencesManager;
+    private Pref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        sharedPreferencesManager = new SharedPreferencesManager(getApplicationContext());
+        pref = new Pref(getApplicationContext());
         ButterKnife.bind(this);
         scoresLayout.startAnimation(AnimationUtil.getZoomIn(this));
-        firstScore.setText(sharedPreferencesManager.getFirstValue());
-        secondScore.setText(sharedPreferencesManager.getSecondValue());
-        thirdScore.setText(sharedPreferencesManager.getThirdValue());
+        firstScore.setText(pref.getFirstValue());
+        secondScore.setText(pref.getSecondValue());
+        thirdScore.setText(pref.getThirdValue());
         shareScore.startAnimation(AnimationUtil.getZoomIn(this));
     }
 
@@ -54,7 +54,7 @@ public class ScoreActivity extends AppCompatActivity {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType(Values.SHARE_INTENT_TYPE);
         String shareBody = getResources().getString(R.string.share_body_part_one)
-                + sharedPreferencesManager.getFirstValue()
+                + pref.getFirstValue()
                 + " " + getResources().getString(R.string.share_body_part_second) + "\n\n"
                 + Values.PLAY_MARKET_URL;
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));

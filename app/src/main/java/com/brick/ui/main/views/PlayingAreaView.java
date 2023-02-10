@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.brick.BuildConfig;
 import com.brick.R;
 import com.brick.Values;
-import com.brick.data.SharedPreferencesManager;
+import com.brick.data.Pref;
 import com.brick.enums.FigureState;
 import com.brick.figures.Figure;
 import com.brick.figures.factory.FigureCreator;
@@ -52,7 +52,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     private FigureCreator figureCreator;
     private ScoreView scoreView;
     private PreviewAreaView previewAreaView;
-    private SharedPreferencesManager sharedPreferencesManager;
+    private Pref pref;
     private OnViewTouchListener onViewTouchListener;
 
     private Paint paint;
@@ -80,10 +80,10 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     private void init(Context context) {
         paint = new Paint();
         figureCreator = new FigureCreator();
-        sharedPreferencesManager = new SharedPreferencesManager(getContext());
+        pref = new Pref(getContext());
         onViewTouchListener = new OnViewTouchListener(context, this);
         setOnTouchListener(onViewTouchListener);
-        this.squaresInRowCount = sharedPreferencesManager.getSquaresCountInRow();
+        this.squaresInRowCount = pref.getSquaresCountInRow();
         this.context = context;
         this.isTimerRunning = true;
         this.isGameOver = false;
@@ -99,7 +99,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
             startMoveDown();
         if (netManager != null && netManager.getStoppedFiguresPaths() != null) {
             for (Path squarePath : netManager.getStoppedFiguresPaths()) {
-                paint.setColor(getResources().getColor(sharedPreferencesManager.getFiguresColor()));
+                paint.setColor(getResources().getColor(pref.getFiguresColor()));
                 canvas.drawPath(squarePath, paint);
             }
         }
@@ -117,7 +117,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     }
 
     public void cleanup() {
-        sharedPreferencesManager.putNewScore(scoreView.getScore());
+        pref.putNewScore(scoreView.getScore());
         cancelTimer();
         scoreView.setStartValue();
         netManager = null;
@@ -140,7 +140,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
 
     private void drawVerticalLines(Canvas canvas) {
         for (int i = 1; i <= squaresInRowCount; i++) {
-            if (sharedPreferencesManager.isHintsEnabled()) drawVerticalHints(i);
+            if (pref.isHintsEnabled()) drawVerticalHints(i);
             canvas.drawLine(i * squareWidth, 0, i * squareWidth, screenHeight, paint);
         }
     }
@@ -186,7 +186,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     private void startMoveDown() {
         if (BuildConfig.DEBUG) netManager.printNet();
         cancelTimer();
-        timer = new CountDownTimer(sharedPreferencesManager.getFiguresSpeed(), COUNT_DOWN_INTERVAL) {
+        timer = new CountDownTimer(pref.getFiguresSpeed(), COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
                 isTimerRunning = true;
             }

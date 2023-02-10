@@ -17,7 +17,7 @@ import com.brick.Values.SQUARES_COUNT_IN_ROW_KEY
 import com.brick.Values.THIRD_VALUE_KEY
 import com.brick.utils.NotificationUtil
 
-class SharedPreferencesManager(private val context: Context) {
+class Pref(private val context: Context) {
     private val preferences: SharedPreferences =
         context.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE)
     private var editor: SharedPreferences.Editor? = null
