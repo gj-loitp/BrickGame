@@ -27,12 +27,12 @@ import com.brick.ui.main.views.PreviewAreaView
 
 object FigureFactory {
     fun getFigure(
-        figureType: FigureType,
+        figureType: FigureType?,
         widthSquare: Int,
         scale: Int,
         squaresCountInRow: Int,
         context: Context
-    ): Figure {
+    ): Figure? {
         return when (figureType) {
             FigureType.S_FIGURE -> SFigure(widthSquare, scale, squaresCountInRow, context)
             FigureType.Z_FIGURE -> ZFigure(widthSquare, scale, squaresCountInRow, context)
@@ -118,16 +118,17 @@ object FigureFactory {
                 /* squaresCountInRow = */ squaresCountInRow,
                 /* context = */ context
             )
+            else -> null
         }
     }
 
     fun getFigure(
-        figureType: FigureType,
+        figureType: FigureType?,
         widthSquare: Int,
         scale: Int,
         context: Context,
         point: Point
-    ): Figure {
+    ): Figure? {
         var scale = scale
         return when (figureType) {
             FigureType.S_FIGURE -> {
@@ -222,13 +223,16 @@ object FigureFactory {
                 if (point.y > widthSquare) point.y = point.y - widthSquare
                 TFourthFigure(widthSquare, scale, context, point)
             }
+            else -> null
         }
     }
 
     @JvmStatic
     fun getFigure(
-        figureType: FigureType, widthSquare: Int, context: Context
-    ): Figure {
+        figureType: FigureType?,
+        widthSquare: Int,
+        context: Context
+    ): Figure? {
         val center = PreviewAreaView.PREVIEW_AREA_WIDTH / 2
         return when (figureType) {
             FigureType.S_FIGURE -> SFigure(
@@ -322,6 +326,7 @@ object FigureFactory {
             FigureType.T_FOURTH_FIGURE -> TFourthFigure(
                 widthSquare, context, Point(center - widthSquare / 2, widthSquare + widthSquare / 2)
             )
+            else -> null
         }
     }
 }
