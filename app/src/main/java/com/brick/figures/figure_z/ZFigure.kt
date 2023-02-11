@@ -1,69 +1,100 @@
-package com.brick.figures.figure_z;
+package com.brick.figures.figure_z
 
-import android.content.Context;
-import android.graphics.Path;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Path
+import android.graphics.Point
+import com.brick.enums.FigureType
+import com.brick.figures.Figure
 
-import com.brick.enums.FigureType;
-import com.brick.figures.Figure;
-
-/**
- * Created by Alina on 02.04.2017.
- */
-
-public class ZFigure extends Figure {
-
-    public ZFigure(int squareWidth, int scale, int squaresCountInRow, Context context) {
-        super(squareWidth, scale, squaresCountInRow, context);
-        this.scale += squareWidth;
+class ZFigure : Figure {
+    constructor(
+        squareWidth: Int,
+        scale: Int,
+        squaresCountInRow: Int,
+        context: Context
+    ) : super(
+        squareWidth,
+        scale,
+        squaresCountInRow,
+        context
+    ) {
+        this.scale += squareWidth
     }
 
-    public ZFigure(int widthSquare, Context context, Point point) {
-        super(widthSquare, context, point);
+    constructor(
+        widthSquare: Int,
+        context: Context,
+        point: Point
+    ) : super(
+        widthSquare,
+        context,
+        point
+    )
+
+    constructor(
+        squareWidth: Int,
+        scale: Int,
+        context: Context,
+        point: Point
+    ) : super(
+        squareWidth,
+        scale,
+        context,
+        point
+    )
+
+    override fun initFigureMask() {
+        super.initFigureMask()
+        figureMask[0][0] = true
+        figureMask[0][1] = true
+        figureMask[1][1] = true
+        figureMask[1][2] = true
     }
 
-    public ZFigure(int squareWidth, int scale, Context context, Point point) {
-        super(squareWidth, scale, context, point);
-    }
-
-    @Override
-    public void initFigureMask() {
-        super.initFigureMask();
-        figureMask[0][0] = true;
-        figureMask[0][1] = true;
-        figureMask[1][1] = true;
-        figureMask[1][2] = true;
-    }
-
-    @Override
-    public FigureType getRotatedFigure() {
-        return FigureType.Z_SECOND_FIGURE;
-    }
-
-    @Override
-    public int getWidthInSquare() {
-        return 3;
-    }
-
-    @Override
-    public int getHeightInSquare() {
-        return 2;
-    }
-
-    @Override
-    public Path getPath() {
-        Path path = new Path();
-        path.moveTo(pointOnScreen.x, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y + squareWidth - scale);
-        path.lineTo(pointOnScreen.x, pointOnScreen.y + squareWidth - scale);
-        path.lineTo(pointOnScreen.x, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x + squareWidth, pointOnScreen.y + squareWidth - scale);
-        path.lineTo(pointOnScreen.x + squareWidth, pointOnScreen.y + 2 * squareWidth - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 3, pointOnScreen.y + 2 * squareWidth - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 3, pointOnScreen.y + squareWidth - scale);
-        path.lineTo(pointOnScreen.x + squareWidth, pointOnScreen.y + squareWidth - scale);
-        path.close();
-        return path;
-    }
+    override val rotatedFigure: FigureType
+        get() = FigureType.Z_SECOND_FIGURE
+    override val widthInSquare: Int
+        get() = 3
+    override val heightInSquare: Int
+        get() = 2
+    override val path: Path
+        get() {
+            val path = Path()
+            path.moveTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y + squareWidth - scale).toFloat()
+            )
+            path.lineTo(
+                pointOnScreen.x.toFloat(),
+                (pointOnScreen.y + squareWidth - scale).toFloat()
+            )
+            path.lineTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
+            path.lineTo(
+                (pointOnScreen.x + squareWidth).toFloat(),
+                (pointOnScreen.y + squareWidth - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth).toFloat(),
+                (pointOnScreen.y + 2 * squareWidth - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 3).toFloat(),
+                (pointOnScreen.y + 2 * squareWidth - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 3).toFloat(),
+                (pointOnScreen.y + squareWidth - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth).toFloat(),
+                (pointOnScreen.y + squareWidth - scale).toFloat()
+            )
+            path.close()
+            return path
+        }
 }
