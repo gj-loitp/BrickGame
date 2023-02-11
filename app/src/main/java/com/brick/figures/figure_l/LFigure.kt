@@ -1,66 +1,88 @@
-package com.brick.figures.figure_l;
+package com.brick.figures.figure_l
 
-import android.content.Context;
-import android.graphics.Path;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Path
+import android.graphics.Point
+import com.brick.enums.FigureType
+import com.brick.figures.Figure
 
-import com.brick.enums.FigureType;
-import com.brick.figures.Figure;
-
-/**
- * Created by Alina on 02.04.2017.
- */
-
-public class LFigure extends Figure {
-
-    public LFigure(int squareWidth, int scale, int squaresCountInRow, Context context) {
-        super(squareWidth, scale, squaresCountInRow, context);
-        int SCALE_HEIGHT = 2 * squareWidth;
-        this.scale += SCALE_HEIGHT;
+class LFigure : Figure {
+    constructor(
+        squareWidth: Int,
+        scale: Int,
+        squaresCountInRow: Int,
+        context: Context
+    ) : super(
+        squareWidth,
+        scale,
+        squaresCountInRow,
+        context
+    ) {
+        val scaleHeight = 2 * squareWidth
+        this.scale += scaleHeight
     }
 
-    public LFigure(int widthSquare, Context context, Point point) {
-        super(widthSquare, context, point);
+    constructor(
+        widthSquare: Int,
+        context: Context,
+        point: Point
+    ) : super(
+        widthSquare,
+        context,
+        point
+    )
+
+    constructor(
+        widthSquare: Int,
+        scale: Int,
+        context: Context,
+        point: Point
+    ) : super(
+        widthSquare,
+        scale,
+        context,
+        point
+    )
+
+    override fun initFigureMask() {
+        super.initFigureMask()
+        figureMask[0][0] = true
+        figureMask[1][0] = true
+        figureMask[2][0] = true
+        figureMask[2][1] = true
     }
 
-    public LFigure(int widthSquare, int scale, Context context, Point point) {
-        super(widthSquare, scale, context, point);
-    }
-
-    @Override
-    public void initFigureMask() {
-        super.initFigureMask();
-        figureMask[0][0] = true;
-        figureMask[1][0] = true;
-        figureMask[2][0] = true;
-        figureMask[2][1] = true;
-    }
-
-    @Override
-    public FigureType getRotatedFigure() {
-        return FigureType.L_FOURTH_FIGURE;
-    }
-
-    @Override
-    public int getWidthInSquare() {
-        return 2;
-    }
-
-    @Override
-    public int getHeightInSquare() {
-        return 3;
-    }
-
-    @Override
-    public Path getPath() {
-        Path path = new Path();
-        path.moveTo(pointOnScreen.x, pointOnScreen.y - scale);
-        path.lineTo(pointOnScreen.x, pointOnScreen.y + squareWidth * 3 - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y + squareWidth * 3 - scale);
-        path.lineTo(pointOnScreen.x + squareWidth * 2, pointOnScreen.y + squareWidth * 2 - scale);
-        path.lineTo(pointOnScreen.x + squareWidth, pointOnScreen.y + squareWidth * 2 - scale);
-        path.lineTo(pointOnScreen.x + squareWidth, pointOnScreen.y - scale);
-        path.close();
-        return path;
-    }
+    override val rotatedFigure: FigureType
+        get() = FigureType.L_FOURTH_FIGURE
+    override val widthInSquare: Int
+        get() = 2
+    override val heightInSquare: Int
+        get() = 3
+    override val path: Path
+        get() {
+            val path = Path()
+            path.moveTo(pointOnScreen.x.toFloat(), (pointOnScreen.y - scale).toFloat())
+            path.lineTo(
+                pointOnScreen.x.toFloat(),
+                (pointOnScreen.y + squareWidth * 3 - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y + squareWidth * 3 - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth * 2).toFloat(),
+                (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth).toFloat(),
+                (pointOnScreen.y + squareWidth * 2 - scale).toFloat()
+            )
+            path.lineTo(
+                (pointOnScreen.x + squareWidth).toFloat(),
+                (pointOnScreen.y - scale).toFloat()
+            )
+            path.close()
+            return path
+        }
 }
