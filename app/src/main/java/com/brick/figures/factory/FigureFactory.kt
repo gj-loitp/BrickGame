@@ -1,205 +1,327 @@
-package com.brick.figures.factory;
+package com.brick.figures.factory
 
-import android.content.Context;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Point
+import com.brick.enums.FigureType
+import com.brick.figures.Figure
+import com.brick.figures.SquareFigure
+import com.brick.figures.figure_j.JFigure
+import com.brick.figures.figure_j.JFourthFigure
+import com.brick.figures.figure_j.JSecondFigure
+import com.brick.figures.figure_j.JThirdFigure
+import com.brick.figures.figure_l.LFigure
+import com.brick.figures.figure_l.LFourthFigure
+import com.brick.figures.figure_l.LSecondFigure
+import com.brick.figures.figure_l.LThirdFigure
+import com.brick.figures.figure_long.LongFigure
+import com.brick.figures.figure_long.LongSecondFigure
+import com.brick.figures.figure_s.SFigure
+import com.brick.figures.figure_s.SSecondFigure
+import com.brick.figures.figure_t.TFigure
+import com.brick.figures.figure_t.TFourthFigure
+import com.brick.figures.figure_t.TSecondFigure
+import com.brick.figures.figure_t.TThirdFigure
+import com.brick.figures.figure_z.ZFigure
+import com.brick.figures.figure_z.ZSecondFigure
+import com.brick.ui.main.views.PreviewAreaView
 
-import com.brick.enums.FigureType;
-import com.brick.figures.Figure;
-import com.brick.figures.figure_j.JFigure;
-import com.brick.figures.figure_j.JFourthFigure;
-import com.brick.figures.figure_j.JSecondFigure;
-import com.brick.figures.figure_j.JThirdFigure;
-import com.brick.figures.figure_l.LFigure;
-import com.brick.figures.figure_l.LFourthFigure;
-import com.brick.figures.figure_l.LSecondFigure;
-import com.brick.figures.figure_l.LThirdFigure;
-import com.brick.figures.figure_long.LongFigure;
-import com.brick.figures.figure_long.LongSecondFigure;
-import com.brick.figures.figure_s.SFigure;
-import com.brick.figures.figure_z.ZSecondFigure;
-import com.brick.figures.SquareFigure;
-import com.brick.figures.figure_t.TFigure;
-import com.brick.figures.figure_t.TFourthFigure;
-import com.brick.figures.figure_t.TSecondFigure;
-import com.brick.figures.figure_t.TThirdFigure;
-import com.brick.figures.figure_z.ZFigure;
-import com.brick.figures.figure_s.SSecondFigure;
-
-import static com.brick.ui.main.views.PreviewAreaView.PREVIEW_AREA_WIDTH;
-
-public class FigureFactory {
-
-    public static Figure getFigure(FigureType figureType, int widthSquare, int scale, int squaresCountInRow, Context context) {
-        switch (figureType) {
-            case S_FIGURE:
-                return new SFigure(widthSquare, scale, squaresCountInRow, context);
-            case Z_FIGURE:
-                return new ZFigure(widthSquare, scale, squaresCountInRow, context);
-            case S_SECOND_FIGURE:
-                return new SSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case Z_SECOND_FIGURE:
-                return new ZSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case L_FIGURE:
-                return new LFigure(widthSquare, scale, squaresCountInRow, context);
-            case L_FOURTH_FIGURE:
-                return new LFourthFigure(widthSquare, scale, squaresCountInRow, context);
-            case L_SECOND_FIGURE:
-                return new LSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case L_THIRD_FIGURE:
-                return new LThirdFigure(widthSquare, scale, squaresCountInRow, context);
-            case J_FIGURE:
-                return new JFigure(widthSquare, scale, squaresCountInRow, context);
-            case J_SECOND_FIGURE:
-                return new JSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case J_FOURTH_FIGURE:
-                return new JFourthFigure(widthSquare, scale, squaresCountInRow, context);
-            case J_THIRD_FIGURE:
-                return new JThirdFigure(widthSquare, scale, squaresCountInRow, context);
-            case SQUARE_FIGURE:
-                return new SquareFigure(widthSquare, scale, squaresCountInRow, context);
-            case LONG_SECOND_FIGURE:
-                return new LongSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case LONG_FIGURE:
-                return new LongFigure(widthSquare, scale, squaresCountInRow, context);
-            case T_FIGURE:
-                return new TFigure(widthSquare, scale, squaresCountInRow, context);
-            case T_SECOND_FIGURE:
-                return new TSecondFigure(widthSquare, scale, squaresCountInRow, context);
-            case T_THIRD_FIGURE:
-                return new TThirdFigure(widthSquare, scale, squaresCountInRow, context);
-            case T_FOURTH_FIGURE:
-                return new TFourthFigure(widthSquare, scale, squaresCountInRow, context);
-            default:
-                return null;
+object FigureFactory {
+    fun getFigure(
+        figureType: FigureType,
+        widthSquare: Int,
+        scale: Int,
+        squaresCountInRow: Int,
+        context: Context
+    ): Figure {
+        return when (figureType) {
+            FigureType.S_FIGURE -> SFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.Z_FIGURE -> ZFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.S_SECOND_FIGURE -> SSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.Z_SECOND_FIGURE -> ZSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.L_FIGURE -> LFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.L_FOURTH_FIGURE -> LFourthFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.L_SECOND_FIGURE -> LSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.L_THIRD_FIGURE -> LThirdFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.J_FIGURE -> JFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.J_SECOND_FIGURE -> JSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.J_FOURTH_FIGURE -> JFourthFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.J_THIRD_FIGURE -> JThirdFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.SQUARE_FIGURE -> SquareFigure(
+                squareWidth = widthSquare,
+                scale = scale,
+                squaresCountInRow = squaresCountInRow,
+                context = context
+            )
+            FigureType.LONG_SECOND_FIGURE -> LongSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.LONG_FIGURE -> LongFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.T_FIGURE -> TFigure(widthSquare, scale, squaresCountInRow, context)
+            FigureType.T_SECOND_FIGURE -> TSecondFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.T_THIRD_FIGURE -> TThirdFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
+            FigureType.T_FOURTH_FIGURE -> TFourthFigure(
+                /* squareWidth = */ widthSquare,
+                /* scale = */ scale,
+                /* squaresCountInRow = */ squaresCountInRow,
+                /* context = */ context
+            )
         }
     }
 
-    public static Figure getFigure(FigureType figureType, int widthSquare, int scale, Context context, Point point) {
-        switch (figureType) {
-            case S_FIGURE:
-                scale += 2 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new SFigure(widthSquare, scale, context, point);
-            case S_SECOND_FIGURE:
-                scale += 2 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new SSecondFigure(widthSquare, scale, context, point);
-            case Z_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new ZFigure(widthSquare, scale, context, point);
-            case Z_SECOND_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new ZSecondFigure(widthSquare, scale, context, point);
-            case L_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare;
-                return new LFigure(widthSquare, scale, context, point);
-            case L_FOURTH_FIGURE:
-                scale += 3 * widthSquare;
-                return new LFourthFigure(widthSquare, scale, context, point);
-            case L_SECOND_FIGURE:
-                scale += 2 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new LSecondFigure(widthSquare, scale, context, point);
-            case L_THIRD_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new LThirdFigure(widthSquare, scale, context, point);
-            case J_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare;
-                return new JFigure(widthSquare, scale, context, point);
-            case J_SECOND_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new JSecondFigure(widthSquare, scale, context, point);
-            case J_FOURTH_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new JFourthFigure(widthSquare, scale, context, point);
-            case J_THIRD_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare;
-                return new JThirdFigure(widthSquare, scale, context, point);
-            case SQUARE_FIGURE:
-                return new SquareFigure(widthSquare, scale, context, point);
-            case LONG_SECOND_FIGURE:
-                scale += 3 * widthSquare;
-                return new LongSecondFigure(widthSquare, scale, context, point);
-            case LONG_FIGURE:
-                scale += 3 * widthSquare;
+    fun getFigure(
+        figureType: FigureType,
+        widthSquare: Int,
+        scale: Int,
+        context: Context,
+        point: Point
+    ): Figure {
+        var scale = scale
+        return when (figureType) {
+            FigureType.S_FIGURE -> {
+                scale += 2 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                SFigure(widthSquare, scale, context, point)
+            }
+            FigureType.S_SECOND_FIGURE -> {
+                scale += 2 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                SSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.Z_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                ZFigure(widthSquare, scale, context, point)
+            }
+            FigureType.Z_SECOND_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                ZSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.L_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare
+                LFigure(widthSquare, scale, context, point)
+            }
+            FigureType.L_FOURTH_FIGURE -> {
+                scale += 3 * widthSquare
+                LFourthFigure(widthSquare, scale, context, point)
+            }
+            FigureType.L_SECOND_FIGURE -> {
+                scale += 2 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                LSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.L_THIRD_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                LThirdFigure(widthSquare, scale, context, point)
+            }
+            FigureType.J_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare
+                JFigure(widthSquare, scale, context, point)
+            }
+            FigureType.J_SECOND_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                JSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.J_FOURTH_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                JFourthFigure(widthSquare, scale, context, point)
+            }
+            FigureType.J_THIRD_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare
+                JThirdFigure(widthSquare, scale, context, point)
+            }
+            FigureType.SQUARE_FIGURE -> SquareFigure(widthSquare, scale, context, point)
+            FigureType.LONG_SECOND_FIGURE -> {
+                scale += 3 * widthSquare
+                LongSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.LONG_FIGURE -> {
+                scale += 3 * widthSquare
                 if (point.y > 3 * widthSquare) {
-                    point.y -= point.y - 2 * widthSquare;
+                    point.y -= point.y - 2 * widthSquare
                 } else if (point.y > 2 * widthSquare) {
-                    point.y = point.y - 2 * widthSquare;
+                    point.y = point.y - 2 * widthSquare
                 }
-                return new LongFigure(widthSquare, scale, context, point);
-            case T_FIGURE:
-                scale += widthSquare;
-                return new TFigure(widthSquare, scale, context, point);
-            case T_SECOND_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new TSecondFigure(widthSquare, scale, context, point);
-            case T_THIRD_FIGURE:
-                scale += 3 * widthSquare;
-                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare;
-                return new TThirdFigure(widthSquare, scale, context, point);
-            case T_FOURTH_FIGURE:
-                scale += 2 * widthSquare;
-                if (point.y > widthSquare) point.y = point.y - widthSquare;
-                return new TFourthFigure(widthSquare, scale, context, point);
-            default:
-                return null;
+                LongFigure(widthSquare, scale, context, point)
+            }
+            FigureType.T_FIGURE -> {
+                scale += widthSquare
+                TFigure(widthSquare, scale, context, point)
+            }
+            FigureType.T_SECOND_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                TSecondFigure(widthSquare, scale, context, point)
+            }
+            FigureType.T_THIRD_FIGURE -> {
+                scale += 3 * widthSquare
+                if (point.y > 2 * widthSquare) point.y = point.y - 2 * widthSquare
+                TThirdFigure(widthSquare, scale, context, point)
+            }
+            FigureType.T_FOURTH_FIGURE -> {
+                scale += 2 * widthSquare
+                if (point.y > widthSquare) point.y = point.y - widthSquare
+                TFourthFigure(widthSquare, scale, context, point)
+            }
         }
     }
 
-    @SuppressWarnings("SuspiciousNameCombination")
-    public static Figure getFigure(FigureType figureType, int widthSquare, Context context) {
-        int center = PREVIEW_AREA_WIDTH / 2;
-        switch (figureType) {
-            case S_FIGURE:
-                return new SFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare + (widthSquare / 2)));
-            case Z_FIGURE:
-                return new ZFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare));
-            case S_SECOND_FIGURE:
-                return new SSecondFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare + (widthSquare / 2)));
-            case Z_SECOND_FIGURE:
-                return new ZSecondFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case L_FIGURE:
-                return new LFigure(widthSquare, context, new Point(center - widthSquare / 4, widthSquare));
-            case L_FOURTH_FIGURE:
-                return new LFourthFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare));
-            case L_SECOND_FIGURE:
-                return new LSecondFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare + (widthSquare / 2)));
-            case L_THIRD_FIGURE:
-                return new LThirdFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case J_FIGURE:
-                return new JFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case J_SECOND_FIGURE:
-                return new JSecondFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare));
-            case J_FOURTH_FIGURE:
-                return new JFourthFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare));
-            case J_THIRD_FIGURE:
-                return new JThirdFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case SQUARE_FIGURE:
-                return new SquareFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case LONG_SECOND_FIGURE:
-                return new LongSecondFigure(widthSquare, context, new Point(center - widthSquare, widthSquare));
-            case LONG_FIGURE:
-                return new LongFigure(widthSquare, context, new Point(center - widthSquare / 4, widthSquare));
-            case T_FIGURE:
-                return new TFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare * 2));
-            case T_SECOND_FIGURE:
-                return new TSecondFigure(widthSquare, context, new Point(center - widthSquare / 2 - widthSquare / 4, widthSquare));
-            case T_THIRD_FIGURE:
-                return new TThirdFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare));
-            case T_FOURTH_FIGURE:
-                return new TFourthFigure(widthSquare, context, new Point(center - widthSquare / 2, widthSquare + (widthSquare / 2)));
-            default:
-                return null;
+    @JvmStatic
+    fun getFigure(
+        figureType: FigureType, widthSquare: Int, context: Context
+    ): Figure {
+        val center = PreviewAreaView.PREVIEW_AREA_WIDTH / 2
+        return when (figureType) {
+            FigureType.S_FIGURE -> SFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(
+                    center - widthSquare / 2 - widthSquare / 4, widthSquare + widthSquare / 2
+                )
+            )
+            FigureType.Z_FIGURE -> ZFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2 - widthSquare / 4, widthSquare)
+            )
+            FigureType.S_SECOND_FIGURE -> SSecondFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2, widthSquare + widthSquare / 2)
+            )
+            FigureType.Z_SECOND_FIGURE -> ZSecondFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.L_FIGURE -> LFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 4, widthSquare)
+            )
+            FigureType.L_FOURTH_FIGURE -> LFourthFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2 - widthSquare / 4, widthSquare)
+            )
+            FigureType.L_SECOND_FIGURE -> LSecondFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(
+                    center - widthSquare / 2 - widthSquare / 4, widthSquare + widthSquare / 2
+                )
+            )
+            FigureType.L_THIRD_FIGURE -> LThirdFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.J_FIGURE -> JFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.J_SECOND_FIGURE -> JSecondFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2 - widthSquare / 4, widthSquare)
+            )
+            FigureType.J_FOURTH_FIGURE -> JFourthFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2 - widthSquare / 4, widthSquare)
+            )
+            FigureType.J_THIRD_FIGURE -> JThirdFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.SQUARE_FIGURE -> SquareFigure(
+                widthSquare = widthSquare,
+                context = context,
+                point = Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.LONG_SECOND_FIGURE -> LongSecondFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare, widthSquare)
+            )
+            FigureType.LONG_FIGURE -> LongFigure(
+                widthSquare, context, Point(center - widthSquare / 4, widthSquare)
+            )
+            FigureType.T_FIGURE -> TFigure(
+                /* widthSquare = */ widthSquare,
+                /* context = */ context,
+                /* point = */ Point(center - widthSquare / 2 - widthSquare / 4, widthSquare * 2)
+            )
+            FigureType.T_SECOND_FIGURE -> TSecondFigure(
+                widthSquare, context, Point(center - widthSquare / 2 - widthSquare / 4, widthSquare)
+            )
+            FigureType.T_THIRD_FIGURE -> TThirdFigure(
+                widthSquare, context, Point(center - widthSquare / 2, widthSquare)
+            )
+            FigureType.T_FOURTH_FIGURE -> TFourthFigure(
+                widthSquare, context, Point(center - widthSquare / 2, widthSquare + widthSquare / 2)
+            )
         }
     }
 }

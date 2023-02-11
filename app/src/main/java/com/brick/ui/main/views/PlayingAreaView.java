@@ -250,7 +250,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     public void rotate() {
         if (currentFigure != null && currentFigure.getState() == FigureState.MOVING
                 && currentFigure.getRotatedFigure() != null && isTimerRunning) {
-            Figure figure = FigureFactory.getFigure(currentFigure.getRotatedFigure(),
+            Figure figure = FigureFactory.INSTANCE.getFigure(currentFigure.getRotatedFigure(),
                     squareWidth, scale, context, currentFigure.pointOnScreen);
             if (figure != null) {
                 figure.initFigureMask();
@@ -264,7 +264,7 @@ public class PlayingAreaView extends View implements OnNetChangedListener, OnPla
     }
 
     private void createFigure() {
-        Figure figure = FigureFactory.getFigure(figureCreator.getCurrentFigureType(),
+        Figure figure = FigureFactory.INSTANCE.getFigure(figureCreator.getCurrentFigureType(),
                 squareWidth, scale, squaresInRowCount, context);
         if (figure != null) {
             currentFigure = figure;
