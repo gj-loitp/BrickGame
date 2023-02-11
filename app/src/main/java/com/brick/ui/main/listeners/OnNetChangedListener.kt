@@ -1,11 +1,7 @@
-package com.brick.ui.main.listeners;
+package com.brick.ui.main.listeners
 
-
-public interface OnNetChangedListener {
-
-    void onFigureStoppedMove();
-
-    void onBottomLineIsTrue();
-
-    void onTopLineHasTrue();
+interface OnNetChangedListener {
+    fun onFigureStoppedMove()
+    fun onBottomLineIsTrue()
+    fun onTopLineHasTrue()
 }

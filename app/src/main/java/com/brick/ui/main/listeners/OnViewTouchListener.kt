@@ -1,78 +1,84 @@
-package com.brick.ui.main.listeners;
+package com.brick.ui.main.listeners
 
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.view.GestureDetector
+import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.MotionEvent
+import android.view.View
+import android.view.View.OnTouchListener
+import kotlin.math.abs
 
-public class OnViewTouchListener implements View.OnTouchListener {
+private const val SWIPE_DISTANCE_THRESHOLD = 100
+private const val SWIPE_VELOCITY_THRESHOLD = 100
 
-    private final GestureDetector gestureDetector;
+class OnViewTouchListener(
+    context: Context?, onPlayingAreaTouch: OnPlayingAreaTouch?
+) : OnTouchListener {
+    private val gestureDetector: GestureDetector
+    private val onPlayingAreaTouch: OnPlayingAreaTouch?
+    private var halfScreenWidth = 0
 
-    private final OnPlayingAreaTouch onPlayingAreaTouch;
-
-    private int halfScreenWidth = 0;
-
-    public OnViewTouchListener(Context context, OnPlayingAreaTouch onPlayingAreaTouch) {
-        gestureDetector = new GestureDetector(context, new GestureListener());
-        this.onPlayingAreaTouch = onPlayingAreaTouch;
+    init {
+        gestureDetector = GestureDetector(context, GestureListener())
+        this.onPlayingAreaTouch = onPlayingAreaTouch
     }
 
-    public void setScreenWidth(int screenWidth) {
-        this.halfScreenWidth = screenWidth / 2;
+    fun setScreenWidth(screenWidth: Int) {
+        halfScreenWidth = screenWidth / 2
     }
 
-    public boolean onTouch(View v, MotionEvent event) {
-        return gestureDetector.onTouchEvent(event);
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouch(
+        v: View, event: MotionEvent
+    ): Boolean {
+        return gestureDetector.onTouchEvent(event)
     }
 
-    private final class GestureListener extends GestureDetector.SimpleOnGestureListener {
-
-        private static final int SWIPE_DISTANCE_THRESHOLD = 100;
-        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            return true;
+    private inner class GestureListener : SimpleOnGestureListener() {
+        override fun onDown(e: MotionEvent): Boolean {
+            return true
         }
 
-        @Override
-        public void onLongPress(MotionEvent e) {
+        override fun onLongPress(e: MotionEvent) {
             if (halfScreenWidth != 0 && onPlayingAreaTouch != null) {
-                if (e.getX() <= halfScreenWidth) {
-                    onPlayingAreaTouch.onLongLeftClick();
-                } else if (e.getX() > halfScreenWidth) {
-                    onPlayingAreaTouch.onLongRightClick();
+                if (e.x <= halfScreenWidth) {
+                    onPlayingAreaTouch.onLongLeftClick()
+                } else if (e.x > halfScreenWidth) {
+                    onPlayingAreaTouch.onLongRightClick()
                 }
             }
-            super.onLongPress(e);
+            super.onLongPress(e)
         }
 
-        @Override
-        public boolean onSingleTapUp(MotionEvent e) {
+        override fun onSingleTapUp(e: MotionEvent): Boolean {
             if (halfScreenWidth != 0 && onPlayingAreaTouch != null) {
-                if (e.getX() <= halfScreenWidth) {
-                    onPlayingAreaTouch.onLeftMove();
-                } else if (e.getX() > halfScreenWidth) {
-                    onPlayingAreaTouch.onRightMove();
+                if (e.x <= halfScreenWidth) {
+                    onPlayingAreaTouch.onLeftMove()
+                } else if (e.x > halfScreenWidth) {
+                    onPlayingAreaTouch.onRightMove()
                 }
             }
-            return super.onSingleTapUp(e);
+            return super.onSingleTapUp(e)
         }
 
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float distanceX = e2.getX() - e1.getX();
-            float distanceY = e2.getY() - e1.getY();
-            if (Math.abs(distanceX) > Math.abs(distanceY) && Math.abs(distanceX) > SWIPE_DISTANCE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+        override fun onFling(
+            e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float
+        ): Boolean {
+            val distanceX = e2.x - e1.x
+            val distanceY = e2.y - e1.y
+            if (abs(distanceX) > abs(distanceY) && abs(distanceX) > SWIPE_DISTANCE_THRESHOLD && abs(
+                    velocityX
+                ) > SWIPE_VELOCITY_THRESHOLD
+            ) {
                 if (distanceX > 0) {
-                    if (onPlayingAreaTouch != null) onPlayingAreaTouch.onRightMove();
+                    onPlayingAreaTouch?.onRightMove()
                 } else {
-                    if (onPlayingAreaTouch != null) onPlayingAreaTouch.onLeftMove();
+                    onPlayingAreaTouch?.onLeftMove()
                 }
-                return true;
+                return true
             }
-            return false;
+            return false
         }
     }
 }

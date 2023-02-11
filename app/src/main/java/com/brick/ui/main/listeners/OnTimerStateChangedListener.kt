@@ -1,8 +1,6 @@
-package com.brick.ui.main.listeners;
+package com.brick.ui.main.listeners
 
-public interface OnTimerStateChangedListener {
-
-    void isTimerRunning(boolean isRunning);
-
-    void disableAllControls();
+interface OnTimerStateChangedListener {
+    fun isTimerRunning(isRunning: Boolean)
+    fun disableAllControls()
 }
