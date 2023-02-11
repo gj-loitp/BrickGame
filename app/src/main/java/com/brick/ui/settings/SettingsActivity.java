@@ -118,7 +118,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsView 
 
     @OnClick(R.id.flPrivacyPolicy)
     void openPrivacyPolicy() {
-        startActivity(new Intent(this, PrivacyPolicyActivity.class));
+        //TODO privary
     }
 
     @OnClick(R.id.sEnableHints)
