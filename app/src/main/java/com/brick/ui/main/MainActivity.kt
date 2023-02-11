@@ -1,106 +1,105 @@
-package com.brick.ui.main;
+package com.brick.ui.main
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import butterknife.BindView
+import butterknife.ButterKnife
+import butterknife.OnClick
+import com.brick.R
+import com.brick.Values
+import com.brick.databinding.ActivityMainBinding
+import com.brick.ui.main.listeners.OnTimerStateChangedListener
+import com.brick.ui.main.views.PlayingAreaView
+import com.brick.ui.main.views.PreviewAreaView
+import com.brick.ui.main.views.ScoreView
+import com.brick.utils.DebouncedOnClickListener
 
-import com.brick.R;
-import com.brick.Values;
-import com.brick.ui.main.listeners.OnTimerStateChangedListener;
-import com.brick.ui.main.views.PlayingAreaView;
-import com.brick.ui.main.views.PreviewAreaView;
-import com.brick.ui.main.views.ScoreView;
-import com.brick.utils.DebouncedOnClickListener;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class MainActivity extends AppCompatActivity implements OnTimerStateChangedListener {
-
+class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
+    @JvmField
     @BindView(R.id.playingArea)
-    PlayingAreaView playingAreaView;
+    var playingAreaView: PlayingAreaView? = null
 
+    @JvmField
     @BindView(R.id.tvScore)
-    ScoreView scoreView;
+    var scoreView: ScoreView? = null
 
+    @JvmField
     @BindView(R.id.tvNextFigure)
-    PreviewAreaView previewAreaView;
+    var previewAreaView: PreviewAreaView? = null
 
+    @JvmField
     @BindView(R.id.ivPausePlay)
-    ImageView playPauseImage;
+    var playPauseImage: ImageView? = null
 
+    @JvmField
     @BindView(R.id.ivRotate)
-    ImageView rotateImage;
+    var rotateImage: ImageView? = null
 
+    @JvmField
     @BindView(R.id.ivMoveDown)
-    ImageView moveDownImage;
+    var moveDownImage: ImageView? = null
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    private lateinit var binding: ActivityMainBinding
 
-        playingAreaView.setDependencies(scoreView, previewAreaView, this);
-        playingAreaView.cleanup();
-        playingAreaView.createFigureWithDelay();
-        ImageView rotate = findViewById(R.id.ivRotate);
-        rotate.setOnClickListener(new DebouncedOnClickListener(Values.DEBOUNCE_DELAY_IN_MILLIS) {
-            @Override
-            public void onDebouncedClick(View v) {
-                playingAreaView.rotate();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        ButterKnife.bind(this)
+        playingAreaView!!.setDependencies(scoreView, previewAreaView, this)
+        playingAreaView!!.cleanup()
+        playingAreaView!!.createFigureWithDelay()
+        val rotate = findViewById<ImageView>(R.id.ivRotate)
+        rotate.setOnClickListener(object :
+            DebouncedOnClickListener(Values.DEBOUNCE_DELAY_IN_MILLIS) {
+            override fun onDebouncedClick(v: View?) {
+                playingAreaView!!.rotate()
             }
-        });
+        })
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (playingAreaView.isTimerRunning()) {
-            playingAreaView.startTimer();
-            setControlsEnabled(true);
+    override fun onResume() {
+        super.onResume()
+        if (playingAreaView!!.isTimerRunning()) {
+            playingAreaView!!.startTimer()
+            setControlsEnabled(true)
         }
     }
 
-    @Override
-    protected void onStop() {
-        playingAreaView.cancelTimer();
-        super.onStop();
+    override fun onStop() {
+        playingAreaView!!.cancelTimer()
+        super.onStop()
     }
 
-    @Override
-    protected void onDestroy() {
-        playingAreaView.cleanup();
-        super.onDestroy();
+    override fun onDestroy() {
+        playingAreaView!!.cleanup()
+        super.onDestroy()
     }
 
-    private void setControlsEnabled(boolean isRunning) {
-        rotateImage.setEnabled(isRunning);
-        moveDownImage.setEnabled(isRunning);
+    private fun setControlsEnabled(isRunning: Boolean) {
+        rotateImage!!.isEnabled = isRunning
+        moveDownImage!!.isEnabled = isRunning
     }
 
     @OnClick(R.id.ivMoveDown)
-    void moveDown() {
-        playingAreaView.fastMoveDown();
+    fun moveDown() {
+        playingAreaView!!.fastMoveDown()
     }
 
     @OnClick(R.id.ivPausePlay)
-    void pausePlay() {
-        playingAreaView.handleTimerState();
+    fun pausePlay() {
+        playingAreaView!!.handleTimerState()
     }
 
-    @Override
-    public void isTimerRunning(boolean isRunning) {
-        playPauseImage.setImageResource(isRunning ? R.drawable.ic_pause : R.drawable.ic_resume);
-        setControlsEnabled(isRunning);
+    override fun isTimerRunning(isRunning: Boolean) {
+        playPauseImage!!.setImageResource(if (isRunning) R.drawable.ic_pause else R.drawable.ic_resume)
+        setControlsEnabled(isRunning)
     }
 
-    @Override
-    public void disableAllControls() {
-        playPauseImage.setEnabled(false);
-        setControlsEnabled(false);
+    override fun disableAllControls() {
+        playPauseImage!!.isEnabled = false
+        setControlsEnabled(false)
     }
 }
