@@ -7,10 +7,6 @@ import android.graphics.Point;
 import com.brick.enums.FigureType;
 import com.brick.figures.Figure;
 
-/**
- * Created by Alina on 11.07.2017.
- */
-
 public class TFigure extends Figure {
 
     public TFigure(int squareWidth, int scale, int squaresCountInRow, Context context) {
