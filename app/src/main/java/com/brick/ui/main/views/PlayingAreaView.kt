@@ -84,7 +84,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
         drawVerticalLines(canvas)
         if (currentFigure != null && currentFigure?.state === FigureState.MOVING && isTimerRunning) startMoveDown()
         netManager?.let { nm ->
-            for (squarePath in nm.stoppedFiguresPaths) {
+            for (squarePath in nm.getStoppedFiguresPaths()) {
 //                    paint.color = resources.getColor(pref.figuresColor)
                 paint.color = ContextCompat.getColor(context, pref.figuresColor)
                 canvas.drawPath(squarePath, paint)
@@ -204,7 +204,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
             }
         }
         netManager?.let { nm ->
-            if (!nm.isNetFreeToMoveDown) {
+            if (!nm.isNetFreeToMoveDown()) {
                 nm.changeFigureState()
                 cancelTimer()
             } else {
@@ -219,7 +219,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
                 cancelTimer()
                 while (f.state === FigureState.MOVING) {
                     netManager?.let { nm ->
-                        if (!nm.isNetFreeToMoveDown) {
+                        if (!nm.isNetFreeToMoveDown()) {
                             nm.changeFigureState()
                         }
                     }
@@ -236,7 +236,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
             if (isTimerRunning) {
                 cancelTimer()
                 netManager?.let { nm ->
-                    while (nm.isNetFreeToMoveRight) {
+                    while (nm.isNetFreeToMoveRight()) {
                         nm.resetMaskBeforeMoveWithFalse()
                         f.moveRight()
                         nm.moveRightInNet()
@@ -252,7 +252,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
             if (isTimerRunning) {
                 cancelTimer()
                 netManager?.let { nm ->
-                    while (nm.isNetFreeToMoveLeft) {
+                    while (nm.isNetFreeToMoveLeft()) {
                         nm.resetMaskBeforeMoveWithFalse()
                         f.moveLeft()
                         nm.moveLeftInNet()
@@ -307,9 +307,11 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
                 )
             }
             netManager?.let { nm ->
-                if (nm.isVerticalLineComplete) {
+                if (nm.isVerticalLineComplete()) {
                     nm.checkBottomLine()
-                    nm.initFigure(currentFigure)
+                    currentFigure?.let {
+                        nm.initFigure(it)
+                    }
                     if (BuildConfig.DEBUG) {
                         nm.printNet()
                     }
@@ -321,7 +323,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
 
     private fun moveLeft() {
         netManager?.let { nm ->
-            if (nm.isNetFreeToMoveLeft && isTimerRunning) {
+            if (nm.isNetFreeToMoveLeft() && isTimerRunning) {
                 nm.resetMaskBeforeMoveWithFalse()
                 currentFigure?.moveLeft()
                 nm.moveLeftInNet()
@@ -335,7 +337,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
 
     private fun moveRight() {
         netManager?.let { nm ->
-            if (nm.isNetFreeToMoveRight && isTimerRunning) {
+            if (nm.isNetFreeToMoveRight() && isTimerRunning) {
                 nm.resetMaskBeforeMoveWithFalse()
                 currentFigure?.moveRight()
                 nm.moveRightInNet()
@@ -362,7 +364,7 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
 
     override fun onFigureStoppedMove() {
         netManager?.let { nm ->
-            if (nm.isVerticalLineComplete) {
+            if (nm.isVerticalLineComplete()) {
                 scoreView?.sumScoreWhenFigureStopped()
                 previewAreaView?.drawNextFigure(
                     /* figure = */ getFigure(

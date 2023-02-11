@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
         binding.ivMoveDown.isEnabled = isRunning
     }
 
-    fun moveDown() {
+    private fun moveDown() {
         binding.playingArea.fastMoveDown()
     }
 
-    fun pausePlay() {
+    private fun pausePlay() {
         binding.playingArea.handleTimerState()
     }
 
