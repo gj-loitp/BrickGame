@@ -10,7 +10,7 @@ android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.roy93group.brick"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 20230210
         versionName "2023.02.10"
