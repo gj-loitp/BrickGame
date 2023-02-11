@@ -1,12 +1,8 @@
-package com.brick.ui.settings;
+package com.brick.ui.settings
 
-interface SettingsView {
-
-    void markChosenColor(int oldColor, int newItemId);
-
-    void setSpeedTitle(int newItemId);
-
-    void setVerticalHintsChecked(boolean hintsEnabled);
-
-    void setSquaresCountInRow(int squaresCountInRow);
+internal interface SettingsView {
+    fun markChosenColor(oldColor: Int, newItemId: Int)
+    fun setSpeedTitle(newItemId: Int)
+    fun setVerticalHintsChecked(hintsEnabled: Boolean)
+    fun setSquaresCountInRow(squaresCountInRow: Int)
 }
