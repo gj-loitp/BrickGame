@@ -1,70 +1,81 @@
-package com.brick.figures.factory;
+package com.brick.figures.factory
 
-import com.brick.enums.FigureType;
+import com.brick.enums.FigureType
+import java.util.*
 
-import java.util.Random;
+class FigureCreator {
+    private val random: Random = Random()
+    private var currentFigureType: FigureType?
+    var nextFigureType: FigureType
+        private set
+    private var mainFigureType: MainFigureType? = null
 
-import static com.brick.enums.FigureType.*;
-
-public class FigureCreator {
-
-    private final Random random;
-    private FigureType currentFigureType;
-    private FigureType nextFigureType;
-    private MainFigureType mainFigureType;
-
-    public FigureCreator() {
-        random = new Random();
-        currentFigureType = null;
-        nextFigureType = getNewFigure();
+    init {
+        currentFigureType = null
+        nextFigureType = newFigure
     }
 
-    private void initFigures() {
-        currentFigureType = nextFigureType;
-        nextFigureType = getNewFigure();
+    private fun initFigures() {
+        currentFigureType = nextFigureType
+        nextFigureType = newFigure
     }
 
-    public FigureType getCurrentFigureType() {
-        if (currentFigureType == null) {
-            return getNewFigure();
-        } else {
-            return currentFigureType;
+    fun getCurrentFigureType(): FigureType {
+        return currentFigureType ?: newFigure
+    }
+
+    fun createNextFigure(): FigureType {
+        initFigures()
+        return nextFigureType
+    }
+
+    private val newFigure: FigureType
+        get() {
+            val nextType = mainFigureType
+            var nextFigure = nextFigureType
+            while (nextType == mainFigureType) {
+                mainFigureType =
+                    MainFigureType.values()[random.nextInt(MainFigureType.values().size)]
+                mainFigureType?.let {
+                    nextFigure = it.types[random.nextInt(it.types.size)]
+                }
+            }
+            return nextFigure
         }
-    }
 
-    public FigureType getNextFigureType() {
-        return nextFigureType;
-    }
+    private enum class MainFigureType(vararg types: FigureType) {
+        LONG_TYPE(
+            FigureType.LONG_FIGURE,
+            FigureType.LONG_SECOND_FIGURE
+        ),
+        SQUARE_TYPE(FigureType.SQUARE_FIGURE),
+        L_TYPE(
+            FigureType.L_FIGURE,
+            FigureType.L_SECOND_FIGURE,
+            FigureType.L_THIRD_FIGURE,
+            FigureType.L_FOURTH_FIGURE
+        ),
+        T_TYPE(
+            FigureType.T_FIGURE,
+            FigureType.T_SECOND_FIGURE,
+            FigureType.T_THIRD_FIGURE,
+            FigureType.T_FOURTH_FIGURE
+        ),
+        J_TYPE(
+            FigureType.J_FIGURE,
+            FigureType.J_SECOND_FIGURE,
+            FigureType.J_THIRD_FIGURE,
+            FigureType.J_FOURTH_FIGURE
+        ),
+        S_TYPE(FigureType.S_FIGURE, FigureType.S_SECOND_FIGURE), Z_TYPE(
+            FigureType.Z_FIGURE,
+            FigureType.Z_SECOND_FIGURE
+        );
 
-    public FigureType createNextFigure() {
-        initFigures();
-        return getNextFigureType();
-    }
+        val types: Array<FigureType>
 
-    private FigureType getNewFigure() {
-        MainFigureType nextType = mainFigureType;
-        FigureType nextFigure = nextFigureType;
-        while(nextType == mainFigureType) {
-            mainFigureType = MainFigureType.values()[random.nextInt(MainFigureType.values().length)];
-            nextFigure = mainFigureType.types[random.nextInt(mainFigureType.types.length)];
-        }
-        return nextFigure;
-    }
-
-    private enum MainFigureType {
-
-        LONG_TYPE(LONG_FIGURE, LONG_SECOND_FIGURE),
-        SQUARE_TYPE(SQUARE_FIGURE),
-        L_TYPE(L_FIGURE, L_SECOND_FIGURE, L_THIRD_FIGURE, L_FOURTH_FIGURE),
-        T_TYPE(T_FIGURE, T_SECOND_FIGURE, T_THIRD_FIGURE, T_FOURTH_FIGURE),
-        J_TYPE(J_FIGURE, J_SECOND_FIGURE, J_THIRD_FIGURE, J_FOURTH_FIGURE),
-        S_TYPE(S_FIGURE, S_SECOND_FIGURE),
-        Z_TYPE(Z_FIGURE, Z_SECOND_FIGURE);
-
-        final FigureType[] types;
-
-        MainFigureType(FigureType...types) {
-            this.types = types;
+        init {
+            this.types = types as Array<FigureType>
         }
     }
 }
