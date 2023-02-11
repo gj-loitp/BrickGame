@@ -1,64 +1,54 @@
-package com.brick.ui.score;
+package com.brick.ui.score
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.brick.R
+import com.brick.Values
+import com.brick.data.Pref
+import com.brick.databinding.ActivityScoreBinding
+import com.brick.utils.AnimationUtil.getZoomIn
 
-import androidx.appcompat.app.AppCompatActivity;
+class ScoreActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityScoreBinding
+    private var pref: Pref? = null
 
-import com.brick.R;
-import com.brick.Values;
-import com.brick.data.Pref;
-import com.brick.utils.AnimationUtil;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+        binding = ActivityScoreBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-public class ScoreActivity extends AppCompatActivity {
+        pref = Pref(applicationContext)
 
-    @BindView(R.id.tvFirstScore)
-    TextView firstScore;
+        binding.llScores.startAnimation(getZoomIn(this))
+        pref?.let { p ->
+            binding.tvFirstScore.text = p.firstValue
+            binding.tvSecondScore.text = p.secondValue
+            binding.tvThirdScore.text = p.thirdValue
+        }
 
-    @BindView(R.id.tvSecondScore)
-    TextView secondScore;
-
-    @BindView(R.id.tvThirdScore)
-    TextView thirdScore;
-
-    @BindView(R.id.llScores)
-    LinearLayout scoresLayout;
-
-    @BindView(R.id.ivShare)
-    ImageView shareScore;
-
-    private Pref pref;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
-        pref = new Pref(getApplicationContext());
-        ButterKnife.bind(this);
-        scoresLayout.startAnimation(AnimationUtil.getZoomIn(this));
-        firstScore.setText(pref.getFirstValue());
-        secondScore.setText(pref.getSecondValue());
-        thirdScore.setText(pref.getThirdValue());
-        shareScore.startAnimation(AnimationUtil.getZoomIn(this));
+        binding.ivShare.startAnimation(getZoomIn(this))
+        binding.ivShare.setOnClickListener {
+            share()
+        }
     }
 
-    @OnClick(R.id.ivShare)
-    public void share() {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType(Values.SHARE_INTENT_TYPE);
-        String shareBody = getResources().getString(R.string.share_body_part_one)
-                + pref.getFirstValue()
-                + " " + getResources().getString(R.string.share_body_part_second) + "\n\n"
-                + Values.PLAY_MARKET_URL;
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_via_text)));
+    private fun share() {
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = Values.SHARE_INTENT_TYPE
+        val shareBody =
+            """${resources.getString(R.string.share_body_part_one)}${pref?.firstValue} ${
+                resources.getString(R.string.share_body_part_second)
+            }
+
+${Values.PLAY_MARKET_URL}"""
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        startActivity(
+            Intent.createChooser(
+                sharingIntent, resources.getString(R.string.share_via_text)
+            )
+        )
     }
 }
