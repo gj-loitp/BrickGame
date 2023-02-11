@@ -1,93 +1,65 @@
-package com.brick.ui.settings;
+package com.brick.ui.settings
 
-import com.brick.R;
-import com.brick.data.Pref;
-import com.brick.enums.FigureSpeed;
-import com.brick.utils.Utils;
+import com.brick.R
+import com.brick.Values.DEFAULT_COLOR
+import com.brick.data.Pref
+import com.brick.enums.FigureSpeed
+import com.brick.utils.Utils.getFiguresSpeedByMillis
+import com.brick.utils.Utils.getViewIdByColor
 
-import static com.brick.Values.DEFAULT_COLOR;
-import static com.brick.enums.FigureSpeed.DEFAULT;
-import static com.brick.enums.FigureSpeed.FAST;
-import static com.brick.enums.FigureSpeed.SLOW;
-import static com.brick.enums.FigureSpeed.VERY_FAST;
-import static com.brick.enums.FigureSpeed.VERY_SLOW;
-
-class SettingsPresenter {
-
-    private final Pref pref;
-    private final SettingsView settingsView;
-
-    SettingsPresenter(SettingsView settingsView, Pref pref) {
-        this.settingsView = settingsView;
-        this.pref = pref;
-    }
-
-    void setValues() {
-        FigureSpeed figureSpeed = Utils.getFiguresSpeedByMillis(pref.getFiguresSpeed());
+internal class SettingsPresenter(
+    private val settingsView: SettingsView?,
+    private val pref: Pref
+) {
+    fun setValues() {
+        val figureSpeed = getFiguresSpeedByMillis(pref.figuresSpeed)
         if (settingsView != null) {
-            settingsView.markChosenColor(DEFAULT_COLOR, Utils.getViewIdByColor(pref.getFiguresColor()));
-            settingsView.setSquaresCountInRow(pref.getSquaresCountInRow());
-            settingsView.setSpeedTitle(figureSpeed.getSpeedItemId());
-            settingsView.setVerticalHintsChecked(pref.isHintsEnabled());
+            settingsView.markChosenColor(DEFAULT_COLOR, getViewIdByColor(pref.figuresColor))
+            settingsView.setSquaresCountInRow(pref.squaresCountInRow)
+            settingsView.setSpeedTitle(figureSpeed.speedItemId)
+            settingsView.setVerticalHintsChecked(pref.isHintsEnabled)
         }
     }
 
-    void setSquareCountInRow(int newValue) {
-        pref.setSquaresCountInRow(newValue);
+    fun setSquareCountInRow(newValue: Int) {
+        pref.squaresCountInRow = newValue
     }
 
-    void getEvent(int id) {
-        switch (id) {
-            case R.id.vLFigureColor:
-                manageColorPicking(R.color.lFigure, id);
-                break;
-            case R.id.vSquareFigureColor:
-                manageColorPicking(R.color.squareFigure, id);
-                break;
-            case R.id.vLongFigureColor:
-                manageColorPicking(R.color.longFigure, id);
-                break;
-            case R.id.vZFigureColor:
-                manageColorPicking(R.color.zFigure, id);
-                break;
-            case R.id.vTFigureColor:
-                manageColorPicking(R.color.tFigure, id);
-                break;
-            case R.id.vJFigureColor:
-                manageColorPicking(R.color.jFigure, id);
-                break;
-            case R.id.sEnableHints:
-                boolean isEnabled = pref.isHintsEnabled();
-                pref.setHintsEnabled(!isEnabled);
-                break;
-            case R.id.tvVeryFast:
-                manageSpeedPicking(VERY_FAST.getFigureSpeedInMillis(), id);
-                break;
-            case R.id.tvFast:
-                manageSpeedPicking(FAST.getFigureSpeedInMillis(), id);
-                break;
-            case R.id.tvDefault:
-                manageSpeedPicking(DEFAULT.getFigureSpeedInMillis(), id);
-                break;
-            case R.id.tvSlow:
-                manageSpeedPicking(SLOW.getFigureSpeedInMillis(), id);
-                break;
-            case R.id.tvVerySlow:
-                manageSpeedPicking(VERY_SLOW.getFigureSpeedInMillis(), id);
-                break;
-            default:
-                break;
+    fun getEvent(id: Int) {
+        when (id) {
+            R.id.vLFigureColor -> manageColorPicking(R.color.lFigure, id)
+            R.id.vSquareFigureColor -> manageColorPicking(R.color.squareFigure, id)
+            R.id.vLongFigureColor -> manageColorPicking(R.color.longFigure, id)
+            R.id.vZFigureColor -> manageColorPicking(R.color.zFigure, id)
+            R.id.vTFigureColor -> manageColorPicking(R.color.tFigure, id)
+            R.id.vJFigureColor -> manageColorPicking(R.color.jFigure, id)
+            R.id.sEnableHints -> {
+                val isEnabled = pref.isHintsEnabled
+                pref.isHintsEnabled = !isEnabled
+            }
+            R.id.tvVeryFast -> manageSpeedPicking(FigureSpeed.VERY_FAST.figureSpeedInMillis, id)
+            R.id.tvFast -> manageSpeedPicking(FigureSpeed.FAST.figureSpeedInMillis, id)
+            R.id.tvDefault -> manageSpeedPicking(FigureSpeed.DEFAULT.figureSpeedInMillis, id)
+            R.id.tvSlow -> manageSpeedPicking(FigureSpeed.SLOW.figureSpeedInMillis, id)
+            R.id.tvVerySlow -> manageSpeedPicking(FigureSpeed.VERY_SLOW.figureSpeedInMillis, id)
+            else -> {}
         }
     }
 
-    private void manageSpeedPicking(long newSpeed, int newItemId) {
-        pref.setFiguresSpeed(newSpeed);
-        settingsView.setSpeedTitle(newItemId);
+    private fun manageSpeedPicking(
+        newSpeed: Long,
+        newItemId: Int
+    ) {
+        pref.figuresSpeed = newSpeed
+        settingsView?.setSpeedTitle(newItemId)
     }
 
-    private void manageColorPicking(int newColor, int newItemId) {
-        int oldColor = pref.getFiguresColor();
-        pref.setFiguresColor(newColor);
-        settingsView.markChosenColor(oldColor, newItemId);
+    private fun manageColorPicking(
+        newColor: Int,
+        newItemId: Int
+    ) {
+        val oldColor = pref.figuresColor
+        pref.figuresColor = newColor
+        settingsView?.markChosenColor(oldColor, newItemId)
     }
 }
