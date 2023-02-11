@@ -1,58 +1,58 @@
-package com.brick.ui.main.views;
+package com.brick.ui.main.views
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import androidx.annotation.Nullable;
-import android.util.AttributeSet;
-import android.view.View;
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.util.AttributeSet
+import android.view.View
+import com.brick.figures.Figure
 
-import com.brick.figures.Figure;
+var PREVIEW_AREA_WIDTH = 0
 
+class PreviewAreaView : View {
+    private var paint: Paint? = null
+    private var figure: Figure? = null
 
-public class PreviewAreaView extends View {
-
-    private Paint paint;
-    private Figure figure;
-    public static int PREVIEW_AREA_WIDTH;
-
-    public PreviewAreaView(Context context) {
-        super(context);
-        init();
+    constructor(context: Context?) : super(context) {
+        init()
     }
 
-    public PreviewAreaView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init();
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        init()
     }
 
-    public PreviewAreaView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        init()
     }
 
-    private void init() {
-        paint = new Paint();
+    private fun init() {
+        paint = Paint()
     }
 
-    public void drawNextFigure(Figure figure) {
-        this.figure = figure;
-        invalidate();
+    fun drawNextFigure(figure: Figure?) {
+        this.figure = figure
+        invalidate()
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        PREVIEW_AREA_WIDTH = MeasureSpec.getSize(widthMeasureSpec);
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        PREVIEW_AREA_WIDTH = MeasureSpec.getSize(widthMeasureSpec)
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        if (figure != null) {
-            Path path = figure.getPath();
-            paint.setColor(figure.getColor());
-            canvas.drawPath(path, paint);
+    override fun onDraw(canvas: Canvas) {
+        figure?.let { f ->
+            val path = f.path
+            paint?.color = f.color
+
+            path?.let { _path ->
+                paint?.let { _paint ->
+                    canvas.drawPath(_path, _paint)
+                }
+            }
         }
     }
 }

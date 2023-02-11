@@ -23,7 +23,7 @@ import com.brick.figures.figure_t.TSecondFigure
 import com.brick.figures.figure_t.TThirdFigure
 import com.brick.figures.figure_z.ZFigure
 import com.brick.figures.figure_z.ZSecondFigure
-import com.brick.ui.main.views.PreviewAreaView
+import com.brick.ui.main.views.PREVIEW_AREA_WIDTH
 
 object FigureFactory {
     fun getFigure(
@@ -233,7 +233,7 @@ object FigureFactory {
         widthSquare: Int,
         context: Context
     ): Figure? {
-        val center = PreviewAreaView.PREVIEW_AREA_WIDTH / 2
+        val center = PREVIEW_AREA_WIDTH / 2
         return when (figureType) {
             FigureType.S_FIGURE -> SFigure(
                 /* widthSquare = */ widthSquare,
