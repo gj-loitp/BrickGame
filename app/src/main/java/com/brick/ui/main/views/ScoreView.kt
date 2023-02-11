@@ -1,49 +1,41 @@
-package com.brick.ui.main.views;
+package com.brick.ui.main.views
 
-import android.content.Context;
-import androidx.appcompat.widget.AppCompatTextView;
-import android.util.AttributeSet;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatTextView
+import com.brick.Values.DEFAULT_VALUE
+import com.brick.Values.FIGURE_STOPPED_SCORE
+import com.brick.ui.main.NetManager
 
-import com.brick.ui.main.NetManager;
+class ScoreView : AppCompatTextView {
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(
+        context, attrs
+    )
 
-import static com.brick.Values.DEFAULT_VALUE;
-import static com.brick.Values.FIGURE_STOPPED_SCORE;
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context, attrs, defStyleAttr
+    )
 
-public class ScoreView extends AppCompatTextView {
+    var score: Int
+        get() = text.toString().toInt()
+        private set(score) {
+            this.text = score.toString()
+        }
 
-    public ScoreView(Context context) {
-        super(context);
+    fun setStartValue() {
+        score = DEFAULT_VALUE
     }
 
-    public ScoreView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    fun sumScoreWhenFigureStopped() {
+        var scoreValue = score
+        scoreValue += FIGURE_STOPPED_SCORE
+        score = scoreValue
     }
 
-    public ScoreView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    public int getScore() {
-        return Integer.parseInt(getText().toString());
-    }
-
-    private void setScore(int score) {
-        this.setText(String.valueOf(score));
-    }
-
-    public void setStartValue() {
-        setScore(DEFAULT_VALUE);
-    }
-
-    public void sumScoreWhenFigureStopped() {
-        int scoreValue = getScore();
-        scoreValue += FIGURE_STOPPED_SCORE;
-        setScore(scoreValue);
-    }
-
-    public void sumScoreWhenBottomLineIsTrue(int squaresInRowCount) {
-        int scoreValue = getScore();
-        scoreValue += squaresInRowCount * FIGURE_STOPPED_SCORE * NetManager.combo;
-        setScore(scoreValue);
+    fun sumScoreWhenBottomLineIsTrue(squaresInRowCount: Int) {
+        var scoreValue = score
+        scoreValue += squaresInRowCount * FIGURE_STOPPED_SCORE * NetManager.combo
+        score = scoreValue
     }
 }
