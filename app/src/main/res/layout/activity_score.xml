@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="2dp"
-    android:background="@drawable/shape_start_activity">
+    android:background="@color/white">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llScores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,41 +17,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvScoresTitle"
             style="@style/text_view_style"
-            android:fontFamily="sans-serif-condensed-light"
             android:text="@string/scores"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/scoresTitleSize" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvFirstScore"
             style="@style/text_view_style"
-            android:fontFamily="sans-serif-condensed-light"
             android:text="@string/initial_score"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/midTextSize"
             android:textStyle="bold" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSecondScore"
             style="@style/text_view_style"
-            android:fontFamily="sans-serif-condensed-light"
             android:text="@string/initial_score"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/midTextSize" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvThirdScore"
             style="@style/text_view_style"
-            android:fontFamily="sans-serif-condensed-light"
             android:text="@string/initial_score"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/midTextSize" />
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ivShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
