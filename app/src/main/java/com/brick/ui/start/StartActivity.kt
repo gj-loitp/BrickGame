@@ -1,67 +1,63 @@
-package com.brick.ui.start;
+package com.brick.ui.start
 
-import android.content.Intent;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.TextView;
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.brick.R
+import com.brick.databinding.ActivityStartBinding
+import com.brick.ui.main.MainActivity
+import com.brick.ui.score.ScoreActivity
+import com.brick.ui.settings.SettingsActivity
+import com.brick.utils.AnimationUtil.getSlideInLeft
+import com.brick.utils.AnimationUtil.getSlideInRight
+import com.brick.utils.AnimationUtil.getZoomIn
 
-import com.brick.R;
-import com.brick.ui.main.MainActivity;
-import com.brick.ui.score.ScoreActivity;
-import com.brick.ui.settings.SettingsActivity;
-import com.brick.utils.AnimationUtil;
+class StartActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityStartBinding
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_start)
 
-public class StartActivity extends AppCompatActivity {
+        binding = ActivityStartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    @BindView(R.id.tvGameTitle)
-    TextView gameTitle;
-
-    @BindView(R.id.bStartGame)
-    TextView startGameButton;
-
-    @BindView(R.id.bOpenScores)
-    TextView openScoresButton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
-        ButterKnife.bind(this);
-        setTitleAnimation();
-        setButtonAnimation();
+        setTitleAnimation()
+        setButtonAnimation()
+        binding.bStartGame.setOnClickListener {
+            startGame()
+        }
+        binding.bOpenScores.setOnClickListener {
+            openScores()
+        }
+        binding.ivSettings.setOnClickListener {
+            openSettings()
+        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setTitleAnimation();
+    override fun onResume() {
+        super.onResume()
+        setTitleAnimation()
     }
 
-    private void setTitleAnimation() {
-        gameTitle.startAnimation(AnimationUtil.getZoomIn(this));
+    private fun setTitleAnimation() {
+        binding.tvGameTitle.startAnimation(getZoomIn(this))
     }
 
-    private void setButtonAnimation() {
-        startGameButton.startAnimation(AnimationUtil.getSlideInLeft(this));
-        openScoresButton.startAnimation(AnimationUtil.getSlideInRight(this));
+    private fun setButtonAnimation() {
+        binding.bStartGame.startAnimation(getSlideInLeft(this))
+        binding.bOpenScores.startAnimation(getSlideInRight(this))
     }
 
-    @OnClick(R.id.bStartGame)
-    void startGame() {
-        this.startActivity(new Intent(this, MainActivity.class));
+    private fun startGame() {
+        this.startActivity(Intent(this, MainActivity::class.java))
     }
 
-    @OnClick(R.id.bOpenScores)
-    void openScores() {
-        this.startActivity(new Intent(this, ScoreActivity.class));
+    private fun openScores() {
+        this.startActivity(Intent(this, ScoreActivity::class.java))
     }
 
-    @OnClick(R.id.ivSettings)
-    void openSettings() {
-        this.startActivity(new Intent(this, SettingsActivity.class));
+    private fun openSettings() {
+        this.startActivity(Intent(this, SettingsActivity::class.java))
     }
 }
