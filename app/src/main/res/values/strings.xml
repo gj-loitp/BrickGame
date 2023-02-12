@@ -35,4 +35,6 @@
     <string name="content_description_move_down" translatable="false">Move down</string>
     <string name="content_description_pause_or_resume_game" translatable="false">Pause or resume game</string>
     <string name="more_apps_title">More apps</string>
+    <string name="brick_game">🅑🅡🅘🅒🅚 🅖🅐🅜🅔</string>
+    <string name="score">🅢🅒🅞🅡🅔</string>
 </resources>
