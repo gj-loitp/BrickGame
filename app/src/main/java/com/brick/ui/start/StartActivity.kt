@@ -2,6 +2,7 @@ package com.brick.ui.start
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.brick.BuildConfig
@@ -13,6 +14,7 @@ import com.brick.ui.settings.SettingsActivity
 import com.brick.utils.AnimationUtil.getSlideInLeft
 import com.brick.utils.AnimationUtil.getSlideInRight
 import com.brick.utils.AnimationUtil.getZoomIn
+import com.brick.utils.openBrowserPolicy
 
 class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
@@ -28,6 +30,12 @@ class StartActivity : AppCompatActivity() {
         setButtonAnimation()
 
         binding.tvVersion.text = "©Roy93Group\nVersion ${BuildConfig.VERSION_NAME}"
+        binding.tvPolicy.apply {
+            paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
+            setOnClickListener {
+                this@StartActivity.openBrowserPolicy()
+            }
+        }
         binding.bStartGame.setOnClickListener {
             startGame()
         }
