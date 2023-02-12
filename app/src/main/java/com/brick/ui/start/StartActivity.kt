@@ -1,8 +1,10 @@
 package com.brick.ui.start
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.brick.BuildConfig
 import com.brick.R
 import com.brick.databinding.ActivityStartBinding
 import com.brick.ui.main.MainActivity
@@ -15,6 +17,7 @@ import com.brick.utils.AnimationUtil.getZoomIn
 class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,6 +26,8 @@ class StartActivity : AppCompatActivity() {
 
         setTitleAnimation()
         setButtonAnimation()
+
+        binding.tvVersion.text = "©Roy93Group\nVersion ${BuildConfig.VERSION_NAME}"
         binding.bStartGame.setOnClickListener {
             startGame()
         }
