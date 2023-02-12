@@ -62,14 +62,14 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun startGame() {
-        this.startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun openScores() {
-        this.startActivity(Intent(this, ScoreActivity::class.java))
+        startActivity(Intent(this, ScoreActivity::class.java))
     }
 
     private fun openSettings() {
-        this.startActivity(Intent(this, SettingsActivity::class.java))
+        startActivity(Intent(this, SettingsActivity::class.java))
     }
 }
