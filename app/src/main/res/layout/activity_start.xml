@@ -11,6 +11,8 @@
         android:id="@+id/tvGameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin16dp"
+        android:gravity="center"
         android:text="@string/game_title"
         android:textColor="@color/black"
         android:textSize="@dimen/mainTextSize"
@@ -21,17 +23,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin16dp"
-        android:text="@string/new_game" />
+        android:text="@string/new_game"
+        android:textSize="@dimen/textSize22"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bOpenScores"
-        style="@style/main_buttons_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin16dp"
-        android:text="@string/scores" />
+        android:text="@string/scores"
+        android:textSize="@dimen/textSize22"
+        android:textStyle="bold" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ivSettings"
-        style="@style/main_buttons_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin16dp"
-        android:text="@string/new_game" />
+        android:text="@string/new_game"
+        android:textSize="@dimen/textSize22"
+        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>

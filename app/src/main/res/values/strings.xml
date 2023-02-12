@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Brick</string>
     <string name="score_text">SCORE</string>
-    <string name="game_title" translatable="false">🅑🅡🅘🅒🅚 🅖🅐🅜🅔</string>
-    <string name="new_game">NEW GAME</string>
+    <string name="game_title" translatable="false">🅑🅡🅘🅒🅚\n🅖🅐🅜🅔</string>
+    <string name="new_game">🅝🅔🅦 🅖🅐🅜🅔</string>
     <string name="scores_text">scores</string>
     <string name="scores">🅢🅒🅞🅡🅔</string>
     <string name="initial_score" translatable="false">0</string>
