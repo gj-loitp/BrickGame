@@ -11,7 +11,7 @@
         android:id="@+id/tvGameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/brick_game"
+        android:text="@string/game_title"
         android:textColor="@color/black"
         android:textSize="@dimen/mainTextSize"
         android:textStyle="bold" />
@@ -27,7 +27,7 @@
         android:id="@+id/bOpenScores"
         style="@style/main_buttons_style"
         android:layout_marginTop="@dimen/margin16dp"
-        android:text="@string/score" />
+        android:text="@string/scores" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ivSettings"
