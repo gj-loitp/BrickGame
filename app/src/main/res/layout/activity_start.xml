@@ -15,7 +15,7 @@
         android:gravity="center"
         android:text="@string/game_title"
         android:textColor="@color/black"
-        android:textSize="@dimen/mainTextSize"
+        android:textSize="70sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -36,13 +36,12 @@
         android:textSize="@dimen/textSize22"
         android:textStyle="bold" />
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ivSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin16dp"
-        android:text="@string/new_game"
+        android:text="@string/setting"
         android:textSize="@dimen/textSize22"
         android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>
