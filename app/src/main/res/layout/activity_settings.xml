@@ -64,7 +64,83 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvGeneralTitle" />
 
-        <include layout="@layout/layout_color_picker" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clColorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPickFiguresColorTitle"
+            tools:showIn="@layout/activity_settings">
+
+            <ImageView
+                android:id="@+id/vLFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/lFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/vSquareFigureColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/vSquareFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/squareFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/vLongFigureColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vLFigureColor"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/vLongFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/longFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/vZFigureColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vSquareFigureColor"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/vZFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/zFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/vTFigureColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vLongFigureColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_ok" />
+
+            <ImageView
+                android:id="@+id/vTFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/tFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/vJFigureColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vZFigureColor"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/vJFigureColor"
+                style="@style/ColorCircleStyle"
+                android:backgroundTint="@color/jFigure"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vTFigureColor"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/vDividerColor"
@@ -91,7 +167,69 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vDividerColor" />
 
-        <include layout="@layout/layout_speed_picker" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSpeedPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/minPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSetSpeedTitle">
+
+            <TextView
+                android:id="@+id/tvVerySlow"
+                style="@style/SpeedItemsStyle"
+                android:text="@string/very_slow_figure_speed_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvSlow"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSlow"
+                style="@style/SpeedItemsStyle"
+                android:text="@string/slow_figure_speed_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvDefault"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvVerySlow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDefault"
+                style="@style/SpeedItemsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_figure_speed_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvFast"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvSlow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFast"
+                style="@style/SpeedItemsStyle"
+                android:text="@string/fast_figure_speed_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvVeryFast"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvDefault"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvVeryFast"
+                style="@style/SpeedItemsStyle"
+                android:text="@string/very_fast_figure_speed_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvFast"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/vDividerSpeed"
@@ -147,7 +285,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/squaresCountNumberPicker" />
 
-        <include layout="@layout/layout_settings_hints" />
+        <FrameLayout
+            android:id="@+id/flShowHints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vDividerPicker"
+            tools:showIn="@layout/activity_settings">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sEnableHints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/margin8dp"
+                android:enabled="true" />
+
+            <TextView
+                android:id="@+id/tvFeedbackTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settingsHeight42dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin8dp"
+                android:paddingEnd="0dp"
+                android:text="@string/show_vertical_hints_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tvOtherTitle"
@@ -176,7 +346,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flRate" />
 
-        <include layout="@layout/layout_settings_more_apps" />
+        <FrameLayout
+            android:id="@+id/flMoreApps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vDividerRate"
+            tools:showIn="@layout/activity_settings">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/margin4dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/tvMoreAppsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settingsHeight42dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin8dp"
+                android:paddingEnd="0dp"
+                android:text="@string/more_apps_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
+
+        </FrameLayout>
 
         <View
             android:id="@+id/vDividerMoreApps"
@@ -185,16 +386,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flMoreApps" />
 
-        <include layout="@layout/layout_settings_feedback" />
-
-        <View
-            android:id="@+id/vDividerFeedback"
-            style="@style/DividerStyle"
+        <FrameLayout
+            android:id="@+id/flPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flFeedback" />
+            app:layout_constraintTop_toBottomOf="@+id/vDividerFeedback"
+            tools:showIn="@layout/activity_settings">
 
-        <include layout="@layout/layout_settings_privacy_policy" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/margin4dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/settingsHeight42dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin8dp"
+                android:paddingEnd="0dp"
+                android:text="@string/privacy_policy_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
+        </FrameLayout>
 
         <View
             android:id="@+id/vDividerPolicy"
