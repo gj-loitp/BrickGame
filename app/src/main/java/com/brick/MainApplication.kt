@@ -7,6 +7,9 @@ import com.brick.Values.CHANNEL_NAME
 import com.brick.Values.SCORE_CHANNEL
 import com.brick.utils.NotificationUtil
 
+//TODO music bkg
+//TODO vibrate
+//TODO ads
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
