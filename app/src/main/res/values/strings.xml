@@ -5,6 +5,7 @@
     <string name="new_game">ⓝⓔⓦ ⓖⓐⓜⓔ</string>
     <string name="scores_text">scores</string>
     <string name="scores">ⓢⓒⓞⓡⓔ</string>
+    <string name="scores_black">🅢🅒🅞🅡🅔</string>
     <string name="initial_score" translatable="false">0</string>
     <string name="next">NEXT</string>
     <string name="new_score_notification_title">New score</string>
