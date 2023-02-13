@@ -115,11 +115,11 @@
             android:layout_margin="@dimen/margin16dp"
             android:contentDescription="@string/content_description_rotate"
             android:elevation="@dimen/margin16dp"
-            android:padding="@dimen/rotateIconPadding"
             app:layout_constraintBottom_toTopOf="@+id/ivMoveDown"
             app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_rotate"
+            app:srcCompat="@drawable/baseline_cached_black_48"
             app:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -128,12 +128,12 @@
             android:layout_margin="@dimen/margin16dp"
             android:contentDescription="@string/content_description_move_down"
             android:elevation="@dimen/margin16dp"
-            android:padding="@dimen/moveDownIconPadding"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toTopOf="@+id/ivPausePlay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivRotate"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_down"
+            app:srcCompat="@drawable/baseline_download_black_48"
             app:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -142,11 +142,11 @@
             android:layout_margin="@dimen/margin16dp"
             android:contentDescription="@string/content_description_pause_or_resume_game"
             android:elevation="@dimen/margin16dp"
-            android:padding="@dimen/pauseIconPadding"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_pause"
+            app:srcCompat="@drawable/baseline_pause_black_48"
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

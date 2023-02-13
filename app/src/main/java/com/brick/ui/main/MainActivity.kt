@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
     }
 
     override fun isTimerRunning(isRunning: Boolean) {
-        binding.ivPausePlay.setImageResource(if (isRunning) R.drawable.ic_pause else R.drawable.ic_resume)
+        binding.ivPausePlay.setImageResource(if (isRunning) R.drawable.baseline_pause_black_48 else R.drawable.baseline_play_arrow_black_48)
         setControlsEnabled(isRunning)
     }
 
