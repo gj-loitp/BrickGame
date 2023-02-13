@@ -275,30 +275,30 @@
                 style="@style/DividerStyle"
                 android:layout_margin="@dimen/margin16dp" />
 
-            <FrameLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/flShowHints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFeedbackTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/show_vertical_hints_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/sEnableHints"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
                     android:enabled="true" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvFeedbackTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/settingsHeight42dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:gravity="center_vertical"
-                    android:text="@string/show_vertical_hints_title"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/settingsTextSize" />
-
-            </FrameLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvOtherTitle"

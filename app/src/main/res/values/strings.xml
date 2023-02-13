@@ -1,40 +1,39 @@
 <resources>
-    <string name="app_name">B̳̿͟͞r̳̿͟͞i̳̿͟͞c̳̿͟͞k̳̿͟͞</string>
+    <string name="app_name">🅑🅡🅘🅒🅚</string>
     <string name="score_text">SCORE</string>
     <string name="game_title" translatable="false">🅑🅡🅘🅒🅚\n🅖🅐🅜🅔</string>
-    <string name="new_game">N̳̿͟͞e̳̿͟͞w̳̿͟͞ G̳̿͟͞a̳̿͟͞m̳̿͟͞e̳̿͟͞</string>
+    <string name="new_game">🅝🅔🅦 🅖🅐🅜🅔</string>
     <string name="scores_text">scores</string>
-    <string name="scores">S̳̿͟͞c̳̿͟͞o̳̿͟͞r̳̿͟͞e̳̿͟͞</string>
-    <string name="scores_black">🅢🅒🅞🅡🅔</string>
+    <string name="scores">🅢🅒🅞🅡🅔</string>
     <string name="initial_score" translatable="false">0</string>
     <string name="next">NEXT</string>
     <string name="new_score_notification_title">New score</string>
     <string name="congrats_sub_title">Congrats! You\'ve reached a new score</string>
     <string name="game_over_text">GAME OVER</string>
     <!--settings-->
-    <string name="privacy_policy_title">P̳̿͟͞r̳̿͟͞i̳̿͟͞v̳̿͟͞a̳̿͟͞c̳̿͟͞y̳̿͟͞ p̳̿͟͞o̳̿͟͞l̳̿͟͞i̳̿͟͞c̳̿͟͞y̳̿͟͞</string>
+    <string name="privacy_policy_title">🅟🅡🅘🅥🅐🅒🅨 🅟🅞🅛🅘🅒🅨</string>
     <string name="feedback_title">Write to developer</string>
-    <string name="rate_title">R̳̿͟͞a̳̿͟͞t̳̿͟͞e̳̿͟͞ o̳̿͟͞n̳̿͟͞ G̳̿͟͞o̳̿͟͞o̳̿͟͞g̳̿͟͞l̳̿͟͞e̳̿͟͞ P̳̿͟͞l̳̿͟͞a̳̿͟͞y̳̿͟͞</string>
-    <string name="other_title">O̳̿͟͞t̳̿͟͞h̳̿͟͞e̳̿͟͞r̳̿͟͞</string>
-    <string name="set_figures_speed_title">B̳̿͟͞r̳̿͟͞i̳̿͟͞c̳̿͟͞k̳̿͟͞s̳̿͟͞\' s̳̿͟͞p̳̿͟͞e̳̿͟͞e̳̿͟͞d̳̿͟͞</string>
-    <string name="pick_figures_colour_title">B̳̿͟͞r̳̿͟͞i̳̿͟͞c̳̿͟͞k̳̿͟͞s̳̿͟͞\' c̳̿͟͞o̳̿͟͞l̳̿͟͞o̳̿͟͞r̳̿͟͞</string>
-    <string name="general_title">G̳̿͟͞e̳̿͟͞n̳̿͟͞e̳̿͟͞r̳̿͟͞a̳̿͟͞l̳̿͟͞</string>
+    <string name="rate_title">🅡🅐🅣🅔 🅞🅝 🅖🅞🅞🅖🅛🅔 🅟🅛🅐🅨</string>
+    <string name="other_title">🅞🅣🅗🅔🅡</string>
+    <string name="set_figures_speed_title">🅑🅡🅘🅒🅚\'🅢 🅢🅟🅔🅔🅓̳</string>
+    <string name="pick_figures_colour_title">🅑🅡🅘🅒🅚\'🅢 🅒🅞🅛🅞🅡</string>
+    <string name="general_title">🅖🅔🅝🅔🅡🅐🅛</string>
     <string name="settings_title">Settings</string>
     <string name="default_figure_speed_text">⓿</string>
     <string name="very_fast_figure_speed_text">+➋</string>
     <string name="fast_figure_speed_text">+➊</string>
     <string name="slow_figure_speed_text">-➊</string>
     <string name="very_slow_figure_speed_text">-➋</string>
-    <string name="show_vertical_hints_title">E̳̿͟͞n̳̿͟͞a̳̿͟͞b̳̿͟͞l̳̿͟͞e̳̿͟͞ v̳̿͟͞e̳̿͟͞r̳̿͟͞t̳̿͟͞i̳̿͟͞c̳̿͟͞a̳̿͟͞l̳̿͟͞ h̳̿͟͞i̳̿͟͞n̳̿͟͞t̳̿͟͞s̳̿͟͞</string>
+    <string name="show_vertical_hints_title">🅔🅝🅐🅑🅛🅔 🅥🅔🅡🅣🅘🅒🅐🅛 🅗🅘🅝🅣</string>
     <string name="cannot_send_email_error_text">Cannot send email</string>
     <string name="cannot_open_market_error_text">Unable to open Play Market app</string>
-    <string name="set_squares_count_in_row_title">S̳̿͟͞q̳̿͟͞u̳̿͟͞a̳̿͟͞r̳̿͟͞e̳̿͟͞s̳̿͟͞ c̳̿͟͞o̳̿͟͞u̳̿͟͞n̳̿͟͞t̳̿͟͞ i̳̿͟͞n̳̿͟͞ a̳̿͟͞ r̳̿͟͞o̳̿͟͞w̳̿͟͞</string>
+    <string name="set_squares_count_in_row_title">🅢🅠🅤🅐🅡🅔🅢 🅒🅞🅤🅝🅣 🅘🅝 🅡🅞🅦</string>
     <string name="share_via_text">Share via</string>
     <string name="share_body_part_one">"I challenge you to beat my highest score - "</string>
     <string name="share_body_part_second">in Brick Game. Cheers!</string>
     <string name="content_description_rotate" translatable="false">Rotate</string>
     <string name="content_description_move_down" translatable="false">Move down</string>
     <string name="content_description_pause_or_resume_game" translatable="false">Pause or resume game</string>
-    <string name="more_apps_title">M̳̿͟͞o̳̿͟͞r̳̿͟͞e̳̿͟͞ a̳̿͟͞p̳̿͟͞p̳̿͟͞s̳̿͟͞</string>
-    <string name="setting">S̳̿͟͞e̳̿͟͞t̳̿͟͞t̳̿͟͞i̳̿͟͞n̳̿͟͞g̳̿͟͞</string>
+    <string name="more_apps_title">🅜🅞🅡🅔 🅐🅟🅟🅢</string>
+    <string name="setting">🅢🅔🅣🅣🅘🅝🅖</string>
 </resources>

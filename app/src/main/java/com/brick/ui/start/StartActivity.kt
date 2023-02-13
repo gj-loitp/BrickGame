@@ -26,7 +26,7 @@ class StartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tvVersion.text =
-            "©R̳̿͟͞o̳̿͟͞y̳̿͟͞9̳̿͟͞3̳̿͟͞G̳̿͟͞r̳̿͟͞o̳̿͟͞u̳̿͟͞p̳̿͟͞\nV̳̿͟͞e̳̿͟͞r̳̿͟͞s̳̿͟͞i̳̿͟͞o̳̿͟͞n̳̿͟͞\n${BuildConfig.VERSION_NAME}"
+            "©🅡🅞🅨➒➌🅖🅡🅞🅤🅟\n🅥🅔🅡🅢🅘🅞🅝\n${BuildConfig.VERSION_NAME}"
         binding.tvPolicy.apply {
             paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
             setOnClickListener {
