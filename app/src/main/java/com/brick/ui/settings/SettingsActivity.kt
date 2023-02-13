@@ -40,6 +40,9 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         speedItems.add(binding.tvSlow)
         speedItems.add(binding.tvVerySlow)
 
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
         binding.squaresCountNumberPicker.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             settingsPresenter?.setSquareCountInRow(newVal)
         }
