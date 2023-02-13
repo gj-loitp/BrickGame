@@ -20,11 +20,11 @@
     <string name="pick_figures_colour_title">Bricks\' color</string>
     <string name="general_title">G̳̿͟͞e̳̿͟͞n̳̿͟͞e̳̿͟͞r̳̿͟͞a̳̿͟͞l̳̿͟͞</string>
     <string name="settings_title">Settings</string>
-    <string name="default_figure_speed_text">Default</string>
-    <string name="very_fast_figure_speed_text">Very fast</string>
-    <string name="fast_figure_speed_text">Fast</string>
-    <string name="slow_figure_speed_text">Slow</string>
-    <string name="very_slow_figure_speed_text">Very slow</string>
+    <string name="default_figure_speed_text">⓿</string>
+    <string name="very_fast_figure_speed_text">+➋</string>
+    <string name="fast_figure_speed_text">+➊</string>
+    <string name="slow_figure_speed_text">-➊</string>
+    <string name="very_slow_figure_speed_text">-➋</string>
     <string name="show_vertical_hints_title">Enable vertical hints</string>
     <string name="cannot_send_email_error_text">Cannot send email</string>
     <string name="cannot_open_market_error_text">Unable to open Play Market app</string>
