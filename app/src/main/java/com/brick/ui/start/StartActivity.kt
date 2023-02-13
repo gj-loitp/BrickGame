@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.brick.BuildConfig
-import com.brick.R
 import com.brick.databinding.ActivityStartBinding
 import com.brick.ui.main.MainActivity
 import com.brick.ui.score.ScoreActivity
@@ -26,10 +25,8 @@ class StartActivity : AppCompatActivity() {
         binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setTitleAnimation()
-        setButtonAnimation()
-
-        binding.tvVersion.text = "©R̳̿͟͞o̳̿͟͞y̳̿͟͞9̳̿͟͞3̳̿͟͞G̳̿͟͞r̳̿͟͞o̳̿͟͞u̳̿͟͞p̳̿͟͞\nV̳̿͟͞e̳̿͟͞r̳̿͟͞s̳̿͟͞i̳̿͟͞o̳̿͟͞n̳̿͟͞\n${BuildConfig.VERSION_NAME}"
+        binding.tvVersion.text =
+            "©R̳̿͟͞o̳̿͟͞y̳̿͟͞9̳̿͟͞3̳̿͟͞G̳̿͟͞r̳̿͟͞o̳̿͟͞u̳̿͟͞p̳̿͟͞\nV̳̿͟͞e̳̿͟͞r̳̿͟͞s̳̿͟͞i̳̿͟͞o̳̿͟͞n̳̿͟͞\n${BuildConfig.VERSION_NAME}"
         binding.tvPolicy.apply {
             paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
             setOnClickListener {
@@ -49,16 +46,13 @@ class StartActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        setTitleAnimation()
-    }
 
-    private fun setTitleAnimation() {
         binding.tvGameTitle.startAnimation(getZoomIn(this))
-    }
-
-    private fun setButtonAnimation() {
-        binding.bStartGame.startAnimation(getSlideInLeft(this))
-        binding.bOpenScores.startAnimation(getSlideInRight(this))
+        binding.tvVersion.startAnimation(getZoomIn(this))
+        binding.bStartGame.startAnimation(getZoomIn(this))
+        binding.bOpenScores.startAnimation(getZoomIn(this))
+        binding.ivSettings.startAnimation(getZoomIn(this))
+        binding.tvPolicy.startAnimation(getZoomIn(this))
     }
 
     private fun startGame() {
