@@ -267,7 +267,6 @@
                 app:np_selectedTextSize="@dimen/textSize22"
                 app:np_textColor="@color/colorPrimaryTransparent"
                 app:np_textSize="@dimen/textSize18"
-                app:np_typeface="sans-serif-condensed"
                 app:np_value="10"
                 app:np_width="180dp" />
 
