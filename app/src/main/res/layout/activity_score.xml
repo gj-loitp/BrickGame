@@ -4,51 +4,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvScoresTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/scores_black"
-        android:textColor="@color/colorPrimary"
-        android:textSize="60sp"
-        android:textStyle="bold" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ivBack"
+        android:layout_width="@dimen/settingsHeight42dp"
+        android:layout_height="@dimen/settingsHeight42dp"
+        android:layout_margin="@dimen/margin16dp"
+        android:background="@drawable/button_circle"
+        android:contentDescription="@string/app_name"
+        android:elevation="@dimen/margin16dp"
+        android:padding="@dimen/shareButtonPadding"
+        android:scaleType="centerInside"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/baseline_reply_black_48" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvFirstScore"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/initial_score"
-        android:textColor="@color/colorAccent"
-        android:textSize="60sp" />
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSecondScore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/initial_score"
-        android:textColor="@color/colorPrimary"
-        android:textSize="60sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvScoresTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/scores_black"
+            android:textColor="@color/colorPrimary"
+            android:textSize="60sp"
+            android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvThirdScore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/initial_score"
-        android:textColor="@color/colorPrimary"
-        android:textSize="60sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFirstScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/initial_score"
+            android:textColor="@color/colorAccent"
+            android:textSize="60sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSecondScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/initial_score"
+            android:textColor="@color/colorPrimary"
+            android:textSize="60sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvThirdScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/initial_score"
+            android:textColor="@color/colorPrimary"
+            android:textSize="60sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ivShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen48dp"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/margin16dp"
         android:background="@drawable/button_circle"
         android:contentDescription="@string/app_name"
         android:elevation="@dimen/margin16dp"

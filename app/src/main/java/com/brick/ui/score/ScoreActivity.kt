@@ -20,17 +20,21 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         pref = Pref(applicationContext)
-
-        binding.tvScoresTitle.startAnimation(getZoomIn(this))
         pref?.let { p ->
             binding.tvFirstScore.text = p.firstValue
             binding.tvSecondScore.text = p.secondValue
             binding.tvThirdScore.text = p.thirdValue
         }
 
+        binding.llc.startAnimation(getZoomIn(this))
         binding.ivShare.startAnimation(getZoomIn(this))
+        binding.ivBack.startAnimation(getZoomIn(this))
+
         binding.ivShare.setOnClickListener {
             share()
+        }
+        binding.ivBack.setOnClickListener {
+            finish()
         }
     }
 
