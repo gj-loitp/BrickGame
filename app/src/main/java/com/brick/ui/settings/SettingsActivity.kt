@@ -15,6 +15,8 @@ import com.brick.data.Pref
 import com.brick.databinding.ActivitySettingsBinding
 import com.brick.utils.Utils
 import com.brick.utils.Utils.getViewIdByColor
+import com.brick.utils.openBrowserPolicy
+import com.brick.utils.rateApp
 import com.shawnlin.numberpicker.NumberPicker
 
 class SettingsActivity : AppCompatActivity(), SettingsView {
@@ -45,6 +47,9 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         }
         binding.squaresCountNumberPicker.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             settingsPresenter?.setSquareCountInRow(newVal)
+        }
+        binding.flRate.setOnClickListener {
+            this@SettingsActivity.rateApp(packageName)
         }
         binding.flMoreApps.setOnClickListener {
             showMoreApps()
@@ -155,7 +160,7 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
     }
 
     private fun openPrivacyPolicy() {
-        //TODO privary
+        this@SettingsActivity.openBrowserPolicy()
     }
 
     private fun enableHints() {

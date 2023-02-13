@@ -1,5 +1,6 @@
 package com.brick.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -29,4 +30,32 @@ fun Context?.openUrlInBrowser(
         Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
     defaultBrowser.data = Uri.parse(url)
     this.startActivity(defaultBrowser)
+}
+
+fun Activity.rateApp(
+    packageName: String
+) {
+    try {
+        this.startActivity(
+            Intent(
+                Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")
+            )
+        )
+    } catch (e: android.content.ActivityNotFoundException) {
+        e.printStackTrace()
+        this.startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("http://play.google.com/store/apps/details?id=$packageName")
+            )
+        )
+    }
+}
+
+fun Activity.moreApp(
+    nameOfDeveloper: String = "Roy93Group"
+) {
+    val uri = "https://play.google.com/store/apps/developer?id=$nameOfDeveloper"
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+    this.startActivity(intent)
 }
