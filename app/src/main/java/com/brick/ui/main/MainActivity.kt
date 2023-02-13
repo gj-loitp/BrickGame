@@ -8,6 +8,7 @@ import com.brick.Values
 import com.brick.databinding.ActivityMainBinding
 import com.brick.ui.main.listeners.OnTimerStateChangedListener
 import com.brick.utils.DebouncedOnClickListener
+import com.brick.utils.setSafeOnClickListener
 
 class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
 
@@ -26,16 +27,19 @@ class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
         )
         binding.playingArea.cleanup()
         binding.playingArea.createFigureWithDelay()
-        binding.ivRotate.setOnClickListener(object :
-            DebouncedOnClickListener(Values.DEBOUNCE_DELAY_IN_MILLIS) {
-            override fun onDebouncedClick(v: View?) {
-                binding.playingArea.rotate()
-            }
-        })
-        binding.ivMoveDown.setOnClickListener {
+//        binding.ivRotate.setOnClickListener(object :
+//            DebouncedOnClickListener(Values.DEBOUNCE_DELAY_IN_MILLIS) {
+//            override fun onDebouncedClick(v: View?) {
+//                binding.playingArea.rotate()
+//            }
+//        })
+        binding.ivRotate.setSafeOnClickListener {
+            binding.playingArea.rotate()
+        }
+        binding.ivMoveDown.setSafeOnClickListener {
             moveDown()
         }
-        binding.ivPausePlay.setOnClickListener {
+        binding.ivPausePlay.setSafeOnClickListener {
             pausePlay()
         }
     }
