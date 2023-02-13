@@ -42,7 +42,7 @@ class ScoreActivity : AppCompatActivity() {
                 resources.getString(R.string.share_body_part_second)
             }
 
-${Values.PLAY_MARKET_URL}"""
+${Values.PLAY_MARKET_URL}${packageName}"""
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
         startActivity(

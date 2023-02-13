@@ -12,15 +12,7 @@ object Values {
     const val GAME_OVER_DELAY_IN_MILLIS: Long = 4000
     const val LINE_WIDTH = 1f
 
-    //TODO
-    @JvmField
-    val RECIPIENTS = arrayOf("alina.stepanova.work@gmail.com")
-
-    //TODO
-    const val PRIVACY_POLICY_URL = "https://alinastepanova.github.io/BrickGame/"
-
-    //TODO
-    const val PLAY_MARKET_URL = "https://play.google.com/store/apps/details?id=com.avs.brick.game"
+    const val PLAY_MARKET_URL = "https://play.google.com/store/apps/details?id="
     const val SHARE_INTENT_TYPE = "text/plain"
     const val DEV_NAME = "Roy93Group"
 
