@@ -14,6 +14,7 @@ import com.brick.utils.AnimationUtil.getSlideInLeft
 import com.brick.utils.AnimationUtil.getSlideInRight
 import com.brick.utils.AnimationUtil.getZoomIn
 import com.brick.utils.openBrowserPolicy
+import com.brick.utils.setSafeOnClickListener
 
 class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
@@ -29,17 +30,17 @@ class StartActivity : AppCompatActivity() {
             "©🅡🅞🅨➒➌🅖🅡🅞🅤🅟\n🅥🅔🅡🅢🅘🅞🅝\n${BuildConfig.VERSION_NAME}"
         binding.tvPolicy.apply {
             paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
-            setOnClickListener {
+            setSafeOnClickListener {
                 this@StartActivity.openBrowserPolicy()
             }
         }
-        binding.bStartGame.setOnClickListener {
+        binding.bStartGame.setSafeOnClickListener {
             startGame()
         }
-        binding.bOpenScores.setOnClickListener {
+        binding.bOpenScores.setSafeOnClickListener {
             openScores()
         }
-        binding.ivSettings.setOnClickListener {
+        binding.ivSettings.setSafeOnClickListener {
             openSettings()
         }
     }

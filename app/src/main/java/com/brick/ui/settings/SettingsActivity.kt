@@ -17,6 +17,7 @@ import com.brick.utils.Utils
 import com.brick.utils.Utils.getViewIdByColor
 import com.brick.utils.openBrowserPolicy
 import com.brick.utils.rateApp
+import com.brick.utils.setSafeOnClickListener
 import com.shawnlin.numberpicker.NumberPicker
 
 class SettingsActivity : AppCompatActivity(), SettingsView {
@@ -42,55 +43,55 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         speedItems.add(binding.tvSlow)
         speedItems.add(binding.tvVerySlow)
 
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.setSafeOnClickListener {
             finish()
         }
         binding.squaresCountNumberPicker.setOnValueChangedListener { _: NumberPicker?, _: Int, newVal: Int ->
             settingsPresenter?.setSquareCountInRow(newVal)
         }
-        binding.flRate.setOnClickListener {
+        binding.flRate.setSafeOnClickListener {
             this@SettingsActivity.rateApp(packageName)
         }
-        binding.flMoreApps.setOnClickListener {
+        binding.flMoreApps.setSafeOnClickListener {
             showMoreApps()
         }
-        binding.flPrivacyPolicy.setOnClickListener {
+        binding.flPrivacyPolicy.setSafeOnClickListener {
             openPrivacyPolicy()
         }
-        binding.sEnableHints.setOnClickListener {
+        binding.sEnableHints.setSafeOnClickListener {
             enableHints()
         }
-        binding.vLFigureColor.setOnClickListener {
+        binding.vLFigureColor.setSafeOnClickListener {
             chooseColorFirst()
         }
-        binding.vSquareFigureColor.setOnClickListener {
+        binding.vSquareFigureColor.setSafeOnClickListener {
             chooseColorSecond()
         }
-        binding.vLongFigureColor.setOnClickListener {
+        binding.vLongFigureColor.setSafeOnClickListener {
             chooseColorThird()
         }
-        binding.vZFigureColor.setOnClickListener {
+        binding.vZFigureColor.setSafeOnClickListener {
             chooseColorFourth()
         }
-        binding.vTFigureColor.setOnClickListener {
+        binding.vTFigureColor.setSafeOnClickListener {
             chooseColorFifth()
         }
-        binding.vJFigureColor.setOnClickListener {
+        binding.vJFigureColor.setSafeOnClickListener {
             chooseColorSixth()
         }
-        binding.tvVerySlow.setOnClickListener {
+        binding.tvVerySlow.setSafeOnClickListener {
             chooseVerySlowSpeed()
         }
-        binding.tvSlow.setOnClickListener {
+        binding.tvSlow.setSafeOnClickListener {
             chooseSlowSpeed()
         }
-        binding.tvDefault.setOnClickListener {
+        binding.tvDefault.setSafeOnClickListener {
             chooseDefaultSpeed()
         }
-        binding.tvFast.setOnClickListener {
+        binding.tvFast.setSafeOnClickListener {
             chooseFastSpeed()
         }
-        binding.tvVeryFast.setOnClickListener {
+        binding.tvVeryFast.setSafeOnClickListener {
             chooseVeryFastSpeed()
         }
     }

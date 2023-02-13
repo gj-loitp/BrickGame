@@ -8,6 +8,7 @@ import com.brick.Values
 import com.brick.data.Pref
 import com.brick.databinding.ActivityScoreBinding
 import com.brick.utils.AnimationUtil.getZoomIn
+import com.brick.utils.setSafeOnClickListener
 
 class ScoreActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScoreBinding
@@ -30,10 +31,10 @@ class ScoreActivity : AppCompatActivity() {
         binding.ivShare.startAnimation(getZoomIn(this))
         binding.ivBack.startAnimation(getZoomIn(this))
 
-        binding.ivShare.setOnClickListener {
+        binding.ivShare.setSafeOnClickListener {
             share()
         }
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.setSafeOnClickListener {
             finish()
         }
     }
