@@ -21,7 +21,7 @@ class ScoreActivity : AppCompatActivity() {
 
         pref = Pref(applicationContext)
 
-        binding.llScores.startAnimation(getZoomIn(this))
+        binding.tvScoresTitle.startAnimation(getZoomIn(this))
         pref?.let { p ->
             binding.tvFirstScore.text = p.firstValue
             binding.tvSecondScore.text = p.secondValue
