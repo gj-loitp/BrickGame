@@ -429,34 +429,38 @@ class NetManager(
     }
 
     fun moveDownInNet() {
-        figure?.let { f ->
-            val zeroNet = Array(1) {
-                BooleanArray(f.widthInSquare)
-            }
-            var coordinateY = f.pointInNet.y
-            coordinateY--
-            for (i in f.figureMask.size downTo 1) {
-                val startPosition = getStartHorizontalPosition(f.figureMask[i - 1])
-                val endPosition = getEndHorizontalPosition(f.figureMask[i - 1])
-                net?.let { n ->
-                    System.arraycopy(
-                        /* p0 = */ f.figureMask[i - 1],
-                        /* p1 = */ startPosition,
-                        /* p2 = */ n[coordinateY + i],
-                        /* p3 = */ f.pointInNet.x + startPosition,
-                        /* p4 = */ endPosition
-                    )
-                    for (zero in zeroNet) {
+        try {
+            figure?.let { f ->
+                val zeroNet = Array(1) {
+                    BooleanArray(f.widthInSquare)
+                }
+                var coordinateY = f.pointInNet.y
+                coordinateY--
+                for (i in f.figureMask.size downTo 1) {
+                    val startPosition = getStartHorizontalPosition(f.figureMask[i - 1])
+                    val endPosition = getEndHorizontalPosition(f.figureMask[i - 1])
+                    net?.let { n ->
                         System.arraycopy(
-                            /* p0 = */ zero,
+                            /* p0 = */ f.figureMask[i - 1],
                             /* p1 = */ startPosition,
-                            /* p2 = */ n[coordinateY + i - 1],
+                            /* p2 = */ n[coordinateY + i],
                             /* p3 = */ f.pointInNet.x + startPosition,
                             /* p4 = */ endPosition
                         )
+                        for (zero in zeroNet) {
+                            System.arraycopy(
+                                /* p0 = */ zero,
+                                /* p1 = */ startPosition,
+                                /* p2 = */ n[coordinateY + i - 1],
+                                /* p3 = */ f.pointInNet.x + startPosition,
+                                /* p4 = */ endPosition
+                            )
+                        }
                     }
                 }
             }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
         }
     }
 
