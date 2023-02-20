@@ -47,11 +47,26 @@
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/settingsHeight42dp"
+            android:layout_height="@dimen/settingsHeight42dp"
+            android:layout_margin="@dimen/margin16dp"
+            android:background="@drawable/button_circle"
+            android:contentDescription="@string/app_name"
+            android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/shareButtonPadding"
+            android:scaleType="centerInside"
+            android:tint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_reply_black_48" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvScoreTitle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen48dp"
-            android:layout_marginTop="@dimen/margin16dp"
             android:gravity="bottom|center_horizontal"
             android:text="@string/scores"
             android:textColor="@color/colorPrimary"
@@ -59,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivBack"
             app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <com.brick.ui.main.views.ScoreView
@@ -115,9 +130,9 @@
             android:layout_margin="@dimen/margin16dp"
             android:contentDescription="@string/content_description_rotate"
             android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toTopOf="@+id/ivMoveDown"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="@dimen/margin16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/baseline_cached_black_48"
             app:tint="@color/white" />

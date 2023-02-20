@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
         binding.ivPausePlay.setSafeOnClickListener {
             pausePlay()
         }
+        binding.ivBack.setSafeOnClickListener {
+            finish()
+        }
     }
 
     override fun onResume() {
