@@ -3,6 +3,7 @@ package com.brick.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.brick.R
 import com.brick.Values
 import com.brick.databinding.ActivityMainBinding
@@ -79,6 +80,7 @@ class MainActivity : AppCompatActivity(), OnTimerStateChangedListener {
     }
 
     override fun isTimerRunning(isRunning: Boolean) {
+        binding.tvPaused.isVisible = !isRunning
         binding.ivPausePlay.setImageResource(if (isRunning) R.drawable.baseline_pause_black_48 else R.drawable.baseline_play_arrow_black_48)
         setControlsEnabled(isRunning)
     }
