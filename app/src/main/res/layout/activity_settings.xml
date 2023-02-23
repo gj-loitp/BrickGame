@@ -1,203 +1,402 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ivBack"
+        android:layout_width="@dimen/settingsHeight42dp"
+        android:layout_height="@dimen/settingsHeight42dp"
+        android:layout_margin="@dimen/margin16dp"
+        android:background="@drawable/button_circle"
+        android:contentDescription="@string/app_name"
+        android:elevation="@dimen/margin16dp"
+        android:padding="@dimen/shareButtonPadding"
+        android:scaleType="centerInside"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/baseline_reply_black_48" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:fadeScrollbars="true"
-        android:scrollbars="vertical"
-        tools:context=".ui.settings.SettingsActivity">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvSettingsTitle"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="@dimen/settingsHeight42dp"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
-            android:text="@string/settings_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/textSize18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            tools:context="com.brick.ui.settings.SettingsActivity">
 
-        <TextView
-            android:id="@+id/tvGeneralTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:background="@color/colorPrimary"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin8dp"
-            android:text="@string/general_title"
-            android:textColor="@color/white"
-            android:textSize="@dimen/settingsTextSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSettingsTitle"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGeneralTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/margin16dp"
+                android:text="@string/general_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/settingsTextSize" />
 
-        <TextView
-            android:id="@+id/tvPickFiguresColorTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin8dp"
-            android:text="@string/pick_figures_colour_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/settingsTextSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvGeneralTitle"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPickFiguresColorTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin16dp"
+                android:text="@string/pick_figures_colour_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
 
-        <include layout="@layout/color_picker"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clColorPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/vDividerColor"
-            android:layout_marginTop="@dimen/margin4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clColorPicker"
-            style="@style/DividerStyle" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vLFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/lFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vSquareFigureColor"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvSetSpeedTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin8dp"
-            android:text="@string/set_figures_speed_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/settingsTextSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vDividerColor"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vSquareFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/squareFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vLongFigureColor"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/vLFigureColor"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <include layout="@layout/speed_picker"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vLongFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/longFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vZFigureColor"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/vSquareFigureColor"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/vDividerSpeed"
-            android:layout_marginTop="@dimen/margin4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clSpeedPicker"
-            style="@style/DividerStyle" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vZFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/zFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vTFigureColor"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/vLongFigureColor"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_ok" />
 
-        <TextView
-            android:id="@+id/tvSetSquaresCountTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin8dp"
-            android:text="@string/set_squares_count_in_row_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/settingsTextSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vDividerSpeed"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vTFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/tFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vJFigureColor"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/vZFigureColor"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/squaresCountNumberPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSetSquaresCountTitle"
-            app:np_dividerColor="@color/colorPrimaryTransparent"
-            app:np_height="56dp"
-            app:np_max="12"
-            app:np_min="8"
-            app:np_orientation="horizontal"
-            app:np_selectedTextColor="@color/colorPrimary"
-            app:np_selectedTextSize="@dimen/textSize22"
-            app:np_textColor="@color/colorPrimaryTransparent"
-            app:np_textSize="@dimen/textSize18"
-            app:np_typeface="sans-serif-condensed"
-            app:np_value="10"
-            app:np_width="180dp"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vJFigureColor"
+                    style="@style/ColorCircleStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:backgroundTint="@color/jFigure"
+                    android:contentDescription="@string/app_name"
+                    android:elevation="@dimen/margin16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/vTFigureColor"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/vDividerPicker"
-            android:layout_marginTop="@dimen/margin8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/squaresCountNumberPicker"
-            style="@style/DividerStyle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <include layout="@layout/settings_hints"/>
+            <View
+                android:id="@+id/vDividerColor"
+                style="@style/DividerStyle"
+                android:layout_margin="@dimen/margin16dp" />
 
-        <TextView
-            android:id="@+id/tvOtherTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:background="@color/colorPrimary"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin8dp"
-            android:text="@string/other_title"
-            android:textColor="@color/white"
-            android:textSize="@dimen/settingsTextSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flShowHints"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSetSpeedTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin16dp"
+                android:text="@string/set_figures_speed_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
 
-        <include layout="@layout/settings_rate"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSpeedPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/vDividerRate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flRate"
-            style="@style/DividerStyle" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvVerySlow"
+                    style="@style/SpeedItemsStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:elevation="@dimen/margin16dp"
+                    android:text="@string/very_slow_figure_speed_text"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSlow"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <include layout="@layout/settings_more_apps"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvSlow"
+                    style="@style/SpeedItemsStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:elevation="@dimen/margin16dp"
+                    android:text="@string/slow_figure_speed_text"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvDefault"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvVerySlow"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/vDividerMoreApps"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flMoreApps"
-            style="@style/DividerStyle" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvDefault"
+                    style="@style/SpeedItemsStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:elevation="@dimen/margin16dp"
+                    android:text="@string/default_figure_speed_text"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvFast"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvSlow"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <include layout="@layout/settings_feedback"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvFast"
+                    style="@style/SpeedItemsStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:elevation="@dimen/margin16dp"
+                    android:text="@string/fast_figure_speed_text"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvVeryFast"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvDefault"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/vDividerFeedback"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flFeedback"
-            style="@style/DividerStyle" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvVeryFast"
+                    style="@style/SpeedItemsStyle"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:elevation="@dimen/margin16dp"
+                    android:text="@string/very_fast_figure_speed_text"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvFast"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <include layout="@layout/settings_privacy_policy"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/vDividerPolicy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flPrivacyPolicy"
-            style="@style/DividerStyle" />
+            <View
+                android:id="@+id/vDividerSpeed"
+                style="@style/DividerStyle"
+                android:layout_marginTop="@dimen/margin16dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSetSquaresCountTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin16dp"
+                android:text="@string/set_squares_count_in_row_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/settingsTextSize" />
+
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/squaresCountNumberPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                app:np_dividerColor="@color/colorPrimaryTransparent"
+                app:np_height="56dp"
+                app:np_max="12"
+                app:np_min="8"
+                app:np_orientation="horizontal"
+                app:np_selectedTextColor="@color/colorPrimary"
+                app:np_selectedTextSize="@dimen/textSize22"
+                app:np_textColor="@color/colorPrimaryTransparent"
+                app:np_textSize="@dimen/textSize18"
+                app:np_value="10"
+                app:np_width="180dp" />
+
+            <View
+                android:id="@+id/vDividerPicker"
+                style="@style/DividerStyle"
+                android:layout_margin="@dimen/margin16dp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/flShowHints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFeedbackTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/show_vertical_hints_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sEnableHints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOtherTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin16dp"
+                android:text="@string/other_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/settingsTextSize" />
+
+            <FrameLayout
+                android:id="@+id/flRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_arrow" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settingsHeight42dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/rate_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
+
+            </FrameLayout>
+
+            <View
+                android:id="@+id/vDividerRate"
+                style="@style/DividerStyle" />
+
+            <FrameLayout
+                android:id="@+id/flMoreApps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_arrow" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMoreAppsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settingsHeight42dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/more_apps_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
+
+            </FrameLayout>
+
+            <View
+                android:id="@+id/vDividerMoreApps"
+                style="@style/DividerStyle" />
+
+            <FrameLayout
+                android:id="@+id/flPrivacyPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_arrow" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPrivacyPolicyTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settingsHeight42dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/privacy_policy_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
+            </FrameLayout>
+
+            <View
+                android:id="@+id/vDividerPolicy"
+                style="@style/DividerStyle" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

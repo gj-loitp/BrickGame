@@ -2,7 +2,6 @@
 Brick Game, also known as Tetris, is an ad free, super lightweight puzzle game built with a help of Canvas 2D API.
 
 How to play:
-
 - Tap or swipe on the screen left and right to move the brick.
 - Fill in the rows - gain scores.
 - Use extra controls to rotate and move brick down fast.
@@ -11,7 +10,6 @@ How to play:
 - Customize the playing process in settings.
 
 Features:
-
 - No ads.
 - No in-app purchases. 
 - Play offline.
@@ -23,9 +21,3 @@ Features:
 - Receive notification with your new best score.
 - Share your best result with friends.
 - Modern design.
-
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/23102335/71322503-cd09f200-24d0-11ea-841d-061ce9b6cd8a.png" width="300">
-  <img src="https://user-images.githubusercontent.com/23102335/71322575-a9937700-24d1-11ea-8567-779e1b09f5e6.png" width="300">
-</p>

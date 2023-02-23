@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llBase"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/white">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -14,19 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.avs.brick.game.ui.main.views.PlayingAreaView
+        <com.brick.ui.main.views.PlayingAreaView
             android:id="@+id/playingArea"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-        </com.avs.brick.game.ui.main.views.PlayingAreaView>
+            android:layout_height="match_parent" />
 
     </FrameLayout>
 
     <View
         android:layout_width="1px"
-        android:background="@color/black"
         android:layout_height="match_parent"
+        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,36 +43,48 @@
         android:id="@+id/llScore"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/settingsHeight42dp"
+            android:layout_height="@dimen/settingsHeight42dp"
+            android:layout_margin="@dimen/margin16dp"
+            android:background="@drawable/button_circle"
+            android:contentDescription="@string/app_name"
+            android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/shareButtonPadding"
+            android:scaleType="centerInside"
+            android:tint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_reply_black_48" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvScoreTitle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen48dp"
-            android:layout_marginTop="@dimen/margin16dp"
-            android:fontFamily="sans-serif-condensed"
             android:gravity="bottom|center_horizontal"
-            android:text="@string/score_text"
+            android:text="@string/scores"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textSize18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivBack"
             app:layout_constraintVertical_chainStyle="spread_inside" />
 
-        <com.avs.brick.game.ui.main.views.ScoreView
+        <com.brick.ui.main.views.ScoreView
             android:id="@+id/tvScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin4dp"
             android:layout_marginEnd="@dimen/margin4dp"
-            android:fontFamily="sans-serif-condensed"
             android:gravity="center_horizontal"
             android:singleLine="false"
             android:text="@string/initial_score"
@@ -81,8 +94,7 @@
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvScoreTitle">
-        </com.avs.brick.game.ui.main.views.ScoreView>
+            app:layout_constraintTop_toBottomOf="@+id/tvScoreTitle" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -91,12 +103,11 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.2" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNextFigureTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin16dp"
-            android:fontFamily="sans-serif-condensed-light"
             android:gravity="bottom|center_horizontal"
             android:text="@string/next"
             android:textColor="@color/colorPrimary"
@@ -106,53 +117,72 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline" />
 
-        <com.avs.brick.game.ui.main.views.PreviewAreaView
+        <com.brick.ui.main.views.PreviewAreaView
             android:id="@+id/tvNextFigure"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/margin8dp"
-            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNextFigureTitle">
-        </com.avs.brick.game.ui.main.views.PreviewAreaView>
+            app:layout_constraintTop_toBottomOf="@+id/tvNextFigureTitle" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivRotate"
-            android:layout_margin="@dimen/margin4dp"
-            android:layout_marginBottom="@dimen/margin"
-            android:padding="@dimen/rotateIconPadding"
+            style="@style/ControlButtonStyle"
+            android:layout_margin="@dimen/margin16dp"
+            android:contentDescription="@string/content_description_rotate"
+            android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toTopOf="@+id/ivMoveDown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_rotate"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_rotate" />
+            app:srcCompat="@drawable/baseline_cached_black_48"
+            app:tint="@color/white" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivMoveDown"
-            android:layout_margin="@dimen/margin4dp"
-            android:padding="@dimen/moveDownIconPadding"
+            style="@style/ControlButtonStyle"
+            android:layout_margin="@dimen/margin16dp"
+            android:contentDescription="@string/content_description_move_down"
+            android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toTopOf="@+id/ivPausePlay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivRotate"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_down"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_move_down" />
+            app:srcCompat="@drawable/baseline_download_black_48"
+            app:tint="@color/white" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivPausePlay"
-            android:layout_margin="@dimen/margin4dp"
-            android:layout_marginBottom="@dimen/margin16dp"
-            android:padding="@dimen/pauseIconPadding"
+            style="@style/ControlButtonStyle"
+            android:layout_margin="@dimen/margin16dp"
+            android:contentDescription="@string/content_description_pause_or_resume_game"
+            android:elevation="@dimen/margin16dp"
+            android:padding="@dimen/margin16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_pause"
-            style="@style/ControlButtonStyle"
-            android:contentDescription="@string/content_description_pause_or_resume_game" />
+            app:srcCompat="@drawable/baseline_pause_black_48"
+            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPaused"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/margin16dp"
+        android:text="@string/paused"
+        android:textColor="@color/colorPrimary"
+        android:textSize="45sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
