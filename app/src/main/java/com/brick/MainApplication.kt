@@ -7,9 +7,6 @@ import com.brick.Values.CHANNEL_NAME
 import com.brick.Values.SCORE_CHANNEL
 import com.brick.utils.NotificationUtil
 
-//TODO game over warning
-//TODO show text warning when play/pause game
-
 //TODO gesture up/down
 //TODO music bkg
 //TODO vibrate

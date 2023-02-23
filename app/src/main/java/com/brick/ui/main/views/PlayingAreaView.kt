@@ -385,7 +385,6 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
     override fun onTopLineHasTrue() {
         isGameOver = true
         cancelTimer()
-        //TODO switch to popup
         onTimerStateChangedListener?.disableAllControls()
         Toast.makeText(context, context.getString(R.string.game_over_text), Toast.LENGTH_LONG)
             .show()

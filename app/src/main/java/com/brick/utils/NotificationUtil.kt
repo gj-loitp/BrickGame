@@ -66,9 +66,7 @@ class NotificationUtil(
                     .setContentIntent(pendingIntent).setContentText(
                         context.getString(R.string.congrats_sub_title) + " - " + score + "!"
                     ).setColorized(true).setAutoCancel(true)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                builder.color = context.getColor(R.color.colorPrimary)
-            }
+            builder.color = context.getColor(R.color.colorPrimary)
             return builder.build()
         }
 
