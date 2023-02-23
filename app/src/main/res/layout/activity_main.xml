@@ -170,8 +170,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPaused"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
         android:padding="@dimen/margin16dp"
         android:text="@string/paused"
         android:textColor="@color/colorPrimary"
