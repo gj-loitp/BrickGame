@@ -18,12 +18,28 @@ android {
         vectorDrawables.useSupportLibrary = true
         resConfigs "en", "uk", "ru-rRU"
     }
+    signingConfigs {
+        release {
+            storeFile file("keystore.jks")
+            storePassword KS_PW
+            keyAlias KS_ALIAS
+            keyPassword KS_PW
+        }
+    }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled true
-            shrinkResources true
-//            signingConfig signingConfigs.release
+            //used android.enableR8=true in gradle.properties
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+//            applicationIdSuffix ".release"
+        }
+        debug {
+            minifyEnabled false
+            //used android.enableR8=true in gradle.properties
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            applicationIdSuffix ".debug"
         }
     }
     aaptOptions {
