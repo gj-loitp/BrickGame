@@ -11,6 +11,7 @@ import com.brick.utils.NotificationUtil
 //TODO music bkg
 //TODO vibrate
 //TODO ads
+//TODO leak canary
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
