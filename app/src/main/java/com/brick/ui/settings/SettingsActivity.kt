@@ -10,11 +10,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import com.applovin.mediation.ads.MaxAdView
 import com.brick.R
 import com.brick.data.Pref
 import com.brick.databinding.ActivitySettingsBinding
 import com.brick.utils.Utils
 import com.brick.utils.Utils.getViewIdByColor
+import com.brick.utils.createAdBanner
+import com.brick.utils.destroyAdBanner
 import com.brick.utils.openBrowserPolicy
 import com.brick.utils.rateApp
 import com.brick.utils.setSafeOnClickListener
@@ -26,6 +29,7 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
 
     private var settingsPresenter: SettingsPresenter? = null
     private lateinit var binding: ActivitySettingsBinding
+    private var adView: MaxAdView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,6 +102,13 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         binding.tvVeryFast.setSafeOnClickListener {
             chooseVeryFastSpeed()
         }
+
+        adView = createAdBanner(
+            logTag = SettingsActivity::class.java.simpleName,
+            bkgColor = getColor(R.color.colorPrimary),
+            viewGroup = binding.flAd,
+            isAdaptiveBanner = true,
+        )
     }
 
     override fun onResume() {
@@ -105,9 +116,14 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         settingsPresenter?.setValues()
     }
 
+    override fun onDestroy() {
+        binding.flAd.destroyAdBanner(adView)
+        super.onDestroy()
+    }
+
     override fun markChosenColor(
         oldColor: Int,
-        newItemId: Int
+        newItemId: Int,
     ) {
         val oldImageView = findViewById<ImageView>(getViewIdByColor(oldColor))
         oldImageView?.setImageDrawable(null)
@@ -134,7 +150,7 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
 
     private fun getDrawable(
         item: TextView,
-        colorId: Int
+        colorId: Int,
     ): Drawable {
         val wrappedDrawable = DrawableCompat.wrap(item.background)
         DrawableCompat.setTintList(
