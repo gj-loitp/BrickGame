@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">🅑🅡🅘🅒🅚</string>
+<!--    <string name="app_name">🅑🅡🅘🅒🅚</string>-->
     <string name="score_text">SCORE</string>
     <string name="game_title" translatable="false">🅑🅡🅘🅒🅚\n🅖🅐🅜🅔</string>
     <string name="new_game">🅝🅔🅦 🅖🅐🅜🅔</string>

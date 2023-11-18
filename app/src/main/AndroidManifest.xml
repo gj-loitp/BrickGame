@@ -43,6 +43,10 @@
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="@string/SDK_KEY" />
     </application>
 
 </manifest>
