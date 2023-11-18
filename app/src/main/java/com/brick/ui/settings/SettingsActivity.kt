@@ -18,6 +18,7 @@ import com.brick.utils.Utils.getViewIdByColor
 import com.brick.utils.openBrowserPolicy
 import com.brick.utils.rateApp
 import com.brick.utils.setSafeOnClickListener
+import com.brick.utils.showMediationDebuggerApplovin
 import com.shawnlin.numberpicker.NumberPicker
 
 class SettingsActivity : AppCompatActivity(), SettingsView {
@@ -57,6 +58,9 @@ class SettingsActivity : AppCompatActivity(), SettingsView {
         }
         binding.flPrivacyPolicy.setSafeOnClickListener {
             openPrivacyPolicy()
+        }
+        binding.flApplovin.setSafeOnClickListener {
+            showMediationDebuggerApplovin()
         }
         binding.sEnableHints.setSafeOnClickListener {
             enableHints()

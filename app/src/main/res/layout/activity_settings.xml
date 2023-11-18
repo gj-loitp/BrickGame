@@ -395,6 +395,33 @@
                 android:id="@+id/vDividerPolicy"
                 style="@style/DividerStyle" />
 
+            <FrameLayout
+                android:id="@+id/flApplovin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin16dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_arrow" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvApplovinTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settingsHeight42dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/applovin_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/settingsTextSize" />
+            </FrameLayout>
+
+            <View
+                android:id="@+id/vDividerApplovin"
+                style="@style/DividerStyle" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.core.widget.NestedScrollView>
