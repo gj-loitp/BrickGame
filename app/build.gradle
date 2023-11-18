@@ -7,13 +7,13 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
     defaultConfig {
         applicationId "com.roy93group.brick"
         minSdkVersion 23
-        targetSdkVersion 33
-        versionCode 20230620
-        versionName "2023.06.20"
+        targetSdkVersion 34
+        versionCode 20231118
+        versionName "2023.11.18"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         resConfigs "en", "uk", "ru-rRU"

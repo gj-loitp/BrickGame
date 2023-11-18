@@ -13,7 +13,7 @@ private const val SWIPE_DISTANCE_THRESHOLD = 100
 private const val SWIPE_VELOCITY_THRESHOLD = 100
 
 class OnViewTouchListener(
-    context: Context?, onPlayingAreaTouch: OnPlayingAreaTouch?
+    context: Context?, onPlayingAreaTouch: OnPlayingAreaTouch?,
 ) : OnTouchListener {
     private val gestureDetector: GestureDetector
     private val onPlayingAreaTouch: OnPlayingAreaTouch?
@@ -30,7 +30,7 @@ class OnViewTouchListener(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(
-        v: View, event: MotionEvent
+        v: View, event: MotionEvent,
     ): Boolean {
         return gestureDetector.onTouchEvent(event)
     }
@@ -63,20 +63,22 @@ class OnViewTouchListener(
         }
 
         override fun onFling(
-            e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float
+            e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float,
         ): Boolean {
-            val distanceX = e2.x - e1.x
-            val distanceY = e2.y - e1.y
-            if (abs(distanceX) > abs(distanceY) && abs(distanceX) > SWIPE_DISTANCE_THRESHOLD && abs(
-                    velocityX
-                ) > SWIPE_VELOCITY_THRESHOLD
-            ) {
-                if (distanceX > 0) {
-                    onPlayingAreaTouch?.onRightMove()
-                } else {
-                    onPlayingAreaTouch?.onLeftMove()
+            if (e1 != null) {
+                val distanceX = e2.x - e1.x
+                val distanceY = e2.y - e1.y
+                if (abs(distanceX) > abs(distanceY) && abs(distanceX) > SWIPE_DISTANCE_THRESHOLD && abs(
+                        velocityX
+                    ) > SWIPE_VELOCITY_THRESHOLD
+                ) {
+                    if (distanceX > 0) {
+                        onPlayingAreaTouch?.onRightMove()
+                    } else {
+                        onPlayingAreaTouch?.onLeftMove()
+                    }
+                    return true
                 }
-                return true
             }
             return false
         }
