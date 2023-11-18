@@ -85,7 +85,6 @@ class PlayingAreaView : View, OnNetChangedListener, OnPlayingAreaTouch {
         if (currentFigure != null && currentFigure?.state === FigureState.MOVING && isTimerRunning) startMoveDown()
         netManager?.let { nm ->
             for (squarePath in nm.getStoppedFiguresPaths()) {
-//                    paint.color = resources.getColor(pref.figuresColor)
                 paint.color = ContextCompat.getColor(context, pref.figuresColor)
                 canvas.drawPath(squarePath, paint)
             }
